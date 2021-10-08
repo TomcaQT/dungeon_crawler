@@ -93,7 +93,10 @@ jobs:
 
       - uses: game-ci/unity-builder@v2
         with:
+          unityVersion: 2021.1.24f1
           targetPlatform: WebGL
+          versioning: Semantic
+          allowDirtyBuild: true
 
       - uses: actions/upload-artifact@v2
         with:
@@ -138,6 +141,9 @@ jobs:
       - uses: game-ci/unity-builder@v2
         with:
           targetPlatform: StandaloneWindows64
+          unityVersion: 2021.1.24f1
+          versioning: Semantic
+          allowDirtyBuild: true
 
       - uses: actions/upload-artifact@v2
         with:
