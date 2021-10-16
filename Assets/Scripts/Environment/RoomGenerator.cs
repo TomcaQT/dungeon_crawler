@@ -27,7 +27,8 @@ public struct ProbabilityValue<T>
 public class RoomGenerator : MonoBehaviour
 {
     
-    [SerializeField] private Vector2Int _roomSize;
+    [SerializeField] private Vector2Int _roomSizeMin;
+    [SerializeField] private Vector2Int _roomSizeMax;
     [SerializeField] private Vector2Int _startingPlace;
     
     [SerializeField] private List<ProbabilityValue<int>> _enemyCountProbability;
@@ -42,11 +43,25 @@ public class RoomGenerator : MonoBehaviour
 
     public void GenerateNewRoom()
     {
+        //TEMP DEBUG
         for (int i = 0; i < 100; i++)
         {
             Debug.Log($"Enemy Count: {GetRandomCount(_enemyCountProbability)}");
             Debug.Log($"Boost Count: {GetRandomCount(_boostCountProbability)}");
         }
+        //if(room.Number % 10 == 0)
+            //GetRandomBoss()
+        //else if(rng < chanceOnTreasure())
+            //GetRandomTreasure
+        //every 5th and 9th room
+            //RandomShop()
+        //GetRandomRoomData()
+            //GetRandomCount(_enemyCountProbability)
+            //GetRandomCount(_boostCountProbability)
+        //SpawnRoom()
+            //CreateWalls()
+            //SpawnEnemies()
+            //SpawnBoosts()
     }
     
     /// <summary>
@@ -67,8 +82,12 @@ public class RoomGenerator : MonoBehaviour
                 return pv.value;
             randomNumber -= pv.probability;
         }
-
         return -1;
     }
-    
+
+    private Vector2Int GetRandomIntSize(Vector2Int min, Vector2Int max)
+    {
+        return new Vector2Int(Random.Range(min.x, max.x + 1), Random.Range(min.y, max.y + 1));
+    }
+
 }
