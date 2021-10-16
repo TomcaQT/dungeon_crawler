@@ -332,7 +332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bcd5962bfaba945a7c7aab4402ba9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roomSize: {x: 0, y: 0}
+  _roomSizeMin: {x: 5, y: 5}
+  _roomSizeMax: {x: 10, y: 10}
   _startingPlace: {x: 0, y: 0}
   _enemyCountProbability:
   - value: 0
