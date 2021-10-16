@@ -343,7 +343,13 @@ MonoBehaviour:
     probability: 0.4
   - value: 3
     probability: 0.15
-  _boostCountProbability: []
+  _boostCountProbability:
+  - value: 0
+    probability: 0.75
+  - value: 1
+    probability: 0.2
+  - value: 2
+    probability: 0.05
 --- !u!1 &1416528337
 GameObject:
   m_ObjectHideFlags: 0

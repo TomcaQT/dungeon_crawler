@@ -36,12 +36,19 @@ public class RoomGenerator : MonoBehaviour
 
     private void Start()
     {
-        //TEMP for testing
-        for (int i = 0; i < 100; i++)
-            Debug.Log(GetRandomCount(_enemyCountProbability));
+
     }
 
 
+    public void GenerateNewRoom()
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            Debug.Log($"Enemy Count: {GetRandomCount(_enemyCountProbability)}");
+            Debug.Log($"Boost Count: {GetRandomCount(_boostCountProbability)}");
+        }
+    }
+    
     /// <summary>
     /// Get random int (from interval [0,probabilities.Count -1]) based on list of probabilities.
     /// </summary>
