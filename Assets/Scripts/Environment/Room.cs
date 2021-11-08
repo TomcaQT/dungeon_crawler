@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room : MonoBehaviour
+public class Room
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int Number;
+    
+    public Vector2Int Size;
+    public RoomShape RoomShape = RoomShape.Square;
+    
+    //TO SPAWN COUNT
+    public int EnemyCount;
+    public int BoostCount;
+    
+    //FLAGS 0 - BossRoom 1- Shop
+    public int RoomFlags = 0x0;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool IsBossRoom => (RoomFlags & 0x1) != 0;
+    public bool IsShopRoom=> (RoomFlags & 0x01) != 0;
+
+    
+    
 }

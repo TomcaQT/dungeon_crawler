@@ -6,38 +6,18 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 
-/// <summary>
-/// Container which contains probability of choosing determined value
-/// </summary>
-/// <typeparam name="T">Type of value</typeparam>
-[System.Serializable]
-public struct ProbabilityValue<T>
-{
-    public ProbabilityValue(T value,float probability)
-    {
-        this.probability = probability;
-        this.value = value;
-    }
-    
-    public T value;
-    public float probability;
-    
-}
-
 public class RoomGenerator : MonoBehaviour
 {
-    
     [SerializeField] private Vector2Int _roomSizeMin;
     [SerializeField] private Vector2Int _roomSizeMax;
     [SerializeField] private Vector2Int _startingPlace;
-    
+
     [SerializeField] private List<ProbabilityValue<int>> _enemyCountProbability;
     [SerializeField] private List<ProbabilityValue<int>> _boostCountProbability;
 
 
     private void Start()
     {
-
     }
 
 
@@ -50,20 +30,20 @@ public class RoomGenerator : MonoBehaviour
             Debug.Log($"Boost Count: {GetRandomCount(_boostCountProbability)}");
         }
         //if(room.Number % 10 == 0)
-            //GetRandomBoss()
+        //GetRandomBoss()
         //else if(rng < chanceOnTreasure())
-            //GetRandomTreasure
+        //GetRandomTreasure
         //every 5th and 9th room
-            //RandomShop()
+        //RandomShop()
         //GetRandomRoomData()
-            //GetRandomCount(_enemyCountProbability)
-            //GetRandomCount(_boostCountProbability)
+        //GetRandomCount(_enemyCountProbability)
+        //GetRandomCount(_boostCountProbability)
         //SpawnRoom()
-            //CreateWalls()
-            //SpawnEnemies()
-            //SpawnBoosts()
+        //CreateWalls()
+        //SpawnEnemies()
+        //SpawnBoosts()
     }
-    
+
     /// <summary>
     /// Get random int (from interval [0,probabilities.Count -1]) based on list of probabilities.
     /// </summary>
@@ -82,6 +62,7 @@ public class RoomGenerator : MonoBehaviour
                 return pv.value;
             randomNumber -= pv.probability;
         }
+
         return -1;
     }
 
@@ -89,5 +70,4 @@ public class RoomGenerator : MonoBehaviour
     {
         return new Vector2Int(Random.Range(min.x, max.x + 1), Random.Range(min.y, max.y + 1));
     }
-
 }
