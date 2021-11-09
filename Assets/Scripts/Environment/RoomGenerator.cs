@@ -10,7 +10,6 @@ public class RoomGenerator : MonoBehaviour
 {
     [SerializeField] private Vector2Int _roomSizeMin;
     [SerializeField] private Vector2Int _roomSizeMax;
-    [SerializeField] private Vector2Int _startingPlace;
 
     [SerializeField] private List<ProbabilityValue<int>> _enemyCountProbability;
     [SerializeField] private List<ProbabilityValue<int>> _boostCountProbability;
@@ -21,14 +20,29 @@ public class RoomGenerator : MonoBehaviour
     }
 
 
-    public void GenerateNewRoom()
+    public Room GenerateNewRoom()
     {
+        Room room = new Room();
         //TEMP DEBUG
         for (int i = 0; i < 100; i++)
         {
             Debug.Log($"Enemy Count: {GetRandomCount(_enemyCountProbability)}");
             Debug.Log($"Boost Count: {GetRandomCount(_boostCountProbability)}");
         }
+
+        room.Size = GetRandomIntSize(_roomSizeMin, _roomSizeMax);
+        room.Grid = new Grid<RoomEntity>(room.Size.x, room.Size.y);
+        room.Grid.SetWithBorder(room.Size.x / 2, room.Size.y/ 2, RoomEntity.START,RoomEntity.SPACE);
+        room.Grid.Set(0,0,RoomEntity.END);
+
+        room.EnemyCount = GetRandomCount(_enemyCountProbability);
+        room.BoostCount = GetRandomCount(_boostCountProbability);
+
+        for (int i = 0; i < room.EnemyCount; i++)
+        {
+            room.Grid.Set();    
+        }        
+        
         //if(room.Number % 10 == 0)
         //GetRandomBoss()
         //else if(rng < chanceOnTreasure())
@@ -38,10 +52,7 @@ public class RoomGenerator : MonoBehaviour
         //GetRandomRoomData()
         //GetRandomCount(_enemyCountProbability)
         //GetRandomCount(_boostCountProbability)
-        //SpawnRoom()
-        //CreateWalls()
-        //SpawnEnemies()
-        //SpawnBoosts()
+        return room;
     }
 
     /// <summary>
@@ -70,4 +81,4 @@ public class RoomGenerator : MonoBehaviour
     {
         return new Vector2Int(Random.Range(min.x, max.x + 1), Random.Range(min.y, max.y + 1));
     }
-}
+    

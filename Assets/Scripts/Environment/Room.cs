@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum RoomEntity { NONE=0, SPACE, ENEMY, START, END, BOOST}
+
 public class Room
 {
     public int Number;
@@ -12,6 +14,8 @@ public class Room
     //TO SPAWN COUNT
     public int EnemyCount;
     public int BoostCount;
+    //OR
+    public Grid<RoomEntity> Grid;
     
     //FLAGS 0 - BossRoom 1- Shop
     public int RoomFlags = 0x0;
