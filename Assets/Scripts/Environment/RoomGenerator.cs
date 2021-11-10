@@ -24,25 +24,36 @@ public class RoomGenerator : MonoBehaviour
     {
         Room room = new Room();
         //TEMP DEBUG
+        /*
         for (int i = 0; i < 100; i++)
         {
             Debug.Log($"Enemy Count: {GetRandomCount(_enemyCountProbability)}");
             Debug.Log($"Boost Count: {GetRandomCount(_boostCountProbability)}");
-        }
+        }8/*/
 
         room.Size = GetRandomIntSize(_roomSizeMin, _roomSizeMax);
+        room.Shape = RoomShape.Square;
         room.Grid = new Grid<RoomEntity>(room.Size.x, room.Size.y);
-        room.Grid.SetWithBorder(room.Size.x / 2, room.Size.y/ 2, RoomEntity.START,RoomEntity.SPACE);
-        room.Grid.Set(0,0,RoomEntity.END);
+        room.Grid.SetWithBorder(room.Size.x / 2, room.Size.y / 2, RoomEntity.START, RoomEntity.SPACE);
+        room.Grid.Set(0, 0, RoomEntity.END);
 
         room.EnemyCount = GetRandomCount(_enemyCountProbability);
         room.BoostCount = GetRandomCount(_boostCountProbability);
 
         for (int i = 0; i < room.EnemyCount; i++)
         {
-            room.Grid.Set();    
-        }        
+            var position = GetRandomFreePositionOnGrid(room.Grid, RoomEntity.NONE);
+            if(position.x >= 0 && position.y >= 0)
+                room.Grid.Set(position.x,position.y,RoomEntity.ENEMY);
+        }
         
+        for (int i = 0; i < room.BoostCount; i++)
+        {
+            var position = GetRandomFreePositionOnGrid(room.Grid, RoomEntity.NONE);
+            if(position.x >= 0 && position.y >= 0)
+                room.Grid.Set(position.x,position.y,RoomEntity.BOOST);
+        }
+
         //if(room.Number % 10 == 0)
         //GetRandomBoss()
         //else if(rng < chanceOnTreasure())
@@ -50,8 +61,6 @@ public class RoomGenerator : MonoBehaviour
         //every 5th and 9th room
         //RandomShop()
         //GetRandomRoomData()
-        //GetRandomCount(_enemyCountProbability)
-        //GetRandomCount(_boostCountProbability)
         return room;
     }
 
@@ -81,4 +90,22 @@ public class RoomGenerator : MonoBehaviour
     {
         return new Vector2Int(Random.Range(min.x, max.x + 1), Random.Range(min.y, max.y + 1));
     }
+
+    private Vector2Int GetRandomFreePositionOnGrid<T>(Grid<T> grid, T free)
+    {
+        int MAX_FAILS = 1000;
+        for (int i = 0; i < MAX_FAILS; i++)
+        {
+            var position = GetRandomPositionOnGrid(grid);
+            if (grid.Get(position.x, position.y).Equals(free))
+                return position;
+        }
+        return new Vector2Int(-1, -1);
+    }
+    
+    private Vector2Int GetRandomPositionOnGrid<T>(Grid<T> grid)
+    {
+        return new Vector2Int(Random.Range(0, grid.Width), Random.Range(0, grid.Height));
+    }
+}
     

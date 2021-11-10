@@ -9,7 +9,7 @@ public class Room
     public int Number;
     
     public Vector2Int Size;
-    public RoomShape RoomShape = RoomShape.Square;
+    public RoomShape Shape = RoomShape.Square;
     
     //TO SPAWN COUNT
     public int EnemyCount;
