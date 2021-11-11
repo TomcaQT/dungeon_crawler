@@ -45,8 +45,9 @@ public class RoomBuilder : MonoBehaviour
     }
     
     
-    public void BuildRoom(Room room)
+    public List<Enemy> BuildRoom(Room room)
     {
+        List<Enemy> enemies = new List<Enemy>();
         if(_roomParent != null)
             ClearChilds(_roomParent);
         //_roomParent = Instantiate(new GameObject("Wall Parent"), Vector3.zero, Quaternion.identity).transform;
@@ -61,15 +62,20 @@ public class RoomBuilder : MonoBehaviour
                 else if (room.Grid.Get(x, y) == RoomEntity.BOOST)
                     toSpawn = GetRandomFromList(_items);
                 else if (room.Grid.Get(x, y) == RoomEntity.START)
-                    toSpawn = _player;
+                    _player.transform.position = new Vector3(x, y, 0);
 
+                GameObject spawned = null;
                 if (toSpawn != null)
-                    Instantiate(toSpawn, new Vector3(x, y, 0), Quaternion.identity,_roomParent);
-
+                    spawned = Instantiate(toSpawn, new Vector3(x, y, 0), Quaternion.identity,_roomParent);
+                if (room.Grid.Get(x, y) == RoomEntity.ENEMY && spawned != null)
+                    enemies.Add(spawned.GetComponent<Enemy>());
+                    
+                    
             }
         
         //Temp -> camera will follow player
         _camera.transform.position = new Vector3(room.Size.x / 2, room.Size.y / 2, -10);
+        return enemies;
     }
 
     private void SpawnWalls(Room room)
