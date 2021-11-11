@@ -199,6 +199,7 @@ MonoBehaviour:
   _roomParent: {fileID: 223075012}
   _wall: {fileID: 8319197432090530745, guid: c4b4fc88877d7cf408c84e9c690ee6fb, type: 3}
   _player: {fileID: 277472546}
+  _endPortal: {fileID: 209750707741171461, guid: 2212bfecea12b1b4694793d308228851, type: 3}
   _enemies:
   - {fileID: 5775565201933828964, guid: 88792def9d49ed54f99ed4d29a69beae, type: 3}
   - {fileID: 244662593221274766, guid: 8cfa76e65bc98ca42b92bcef8b7aecfd, type: 3}
@@ -431,6 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12427e6b7475bad47964a3ea24a70d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _endPoint: {fileID: 0}
 --- !u!1 &1416528337
 GameObject:
   m_ObjectHideFlags: 0

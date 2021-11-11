@@ -15,6 +15,7 @@ public class RoomBuilder : MonoBehaviour
 
 
     [SerializeField] private GameObject _player;
+    [SerializeField] private GameObject _endPortal;
     [SerializeField] private List<GameObject> _enemies;
     [SerializeField] private List<GameObject> _items;
 
@@ -45,9 +46,10 @@ public class RoomBuilder : MonoBehaviour
     }
     
     
-    public List<Enemy> BuildRoom(Room room)
+    public GameObject BuildRoom(Room room, out List<Enemy> enemies)
     {
-        List<Enemy> enemies = new List<Enemy>();
+        enemies = new List<Enemy>();
+        GameObject end = null;
         if(_roomParent != null)
             ClearChilds(_roomParent);
         //_roomParent = Instantiate(new GameObject("Wall Parent"), Vector3.zero, Quaternion.identity).transform;
@@ -63,19 +65,23 @@ public class RoomBuilder : MonoBehaviour
                     toSpawn = GetRandomFromList(_items);
                 else if (room.Grid.Get(x, y) == RoomEntity.START)
                     _player.transform.position = new Vector3(x, y, 0);
+                else if (room.Grid.Get(x, y) == RoomEntity.END)
+                    toSpawn = _endPortal;
 
                 GameObject spawned = null;
                 if (toSpawn != null)
                     spawned = Instantiate(toSpawn, new Vector3(x, y, 0), Quaternion.identity,_roomParent);
                 if (room.Grid.Get(x, y) == RoomEntity.ENEMY && spawned != null)
                     enemies.Add(spawned.GetComponent<Enemy>());
-                    
-                    
+                if (room.Grid.Get(x, y) == RoomEntity.END && spawned != null)
+                    end = spawned;
+
+
             }
         
         //Temp -> camera will follow player
         _camera.transform.position = new Vector3(room.Size.x / 2, room.Size.y / 2, -10);
-        return enemies;
+        return end;
     }
 
     private void SpawnWalls(Room room)

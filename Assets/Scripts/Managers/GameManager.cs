@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     private List<Enemy> _enemies;
     
+    [SerializeField] private GameObject _endPoint;
+    
     private void Awake()
     {
         _roomGenerator = GameObject.Find("Room Generator").GetComponent<RoomGenerator>();
@@ -25,17 +27,22 @@ public class GameManager : MonoBehaviour
 
     public void NextRoom()
     {
-        _enemies = _roomBuilder.BuildRoom(_roomGenerator.GenerateNewRoom());
-        if(_enemies.Count <= 0)
-            NextRoom();
+        _endPoint = _roomBuilder.BuildRoom(_roomGenerator.GenerateNewRoom(),out _enemies);
         _enemies.ForEach(x => x.OnEnemyDeath += e_OnEnemyDeath);
+        _endPoint.GetComponent<End>().OnRoomEnd += e_OnRoomEnd;
     }
 
+    private void e_OnRoomEnd(object sender, EventArgs e)
+    {
+        if (_enemies.Count <= 0)
+          NextRoom();
+    }
+    
     private void e_OnEnemyDeath(object sender, EventArgs e)
     {
         _enemies.Remove((Enemy) sender);
-        if(_enemies.Count <= 0)
-            NextRoom();
+        if (_enemies.Count <= 0)
+            _endPoint.SetActive(true);
     }
     
     
