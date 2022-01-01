@@ -17,7 +17,7 @@ public class RoomGenerator : MonoBehaviour
 
     private void Start()
     {
-    }
+    }   
 
 
     public Room GenerateNewRoom()
