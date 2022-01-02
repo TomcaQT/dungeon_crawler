@@ -20,8 +20,16 @@ public class Enemy : MonoBehaviour, IDamagable
         if (_hp.Take(damage))
         {
             OnEnemyDeath?.Invoke(this,new EventArgs());
+            DropItems();
             Destroy(gameObject);
         }
         
     }
+
+    private void DropItems()
+    {
+        
+    }
+    
+    
 }
