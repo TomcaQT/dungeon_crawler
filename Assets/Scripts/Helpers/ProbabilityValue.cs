@@ -1,16 +1,19 @@
-/// <summary>
-/// Container which contains probability of choosing determined value
-/// </summary>
-/// <typeparam name="T">Type of value</typeparam>
-[System.Serializable]
-public struct ProbabilityValue<T>
+namespace Helpers
 {
-    public ProbabilityValue(T value, float probability)
+    /// <summary>
+    /// Container which contains probability of choosing determined value
+    /// </summary>
+    /// <typeparam name="T">Type of value</typeparam>
+    [System.Serializable]
+    public struct ProbabilityValue<T>
     {
-        this.probability = probability;
-        this.value = value;
-    }
+        public ProbabilityValue(T value, float probability)
+        {
+            this.probability = probability;
+            this.value = value;
+        }
 
-    public T value;
-    public float probability;
+        public T value;
+        public float probability;
+    }
 }
