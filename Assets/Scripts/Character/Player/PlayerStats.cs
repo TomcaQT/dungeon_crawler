@@ -9,12 +9,13 @@ public class PlayerStats : MonoBehaviour, IDamagable
     [SerializeField] private Resource _hp;
     [SerializeField] private Resource _energy; // ????
 
-    public Stat _damage;
-    public Stat _resistency;
-    public Stat _attackSpeed;
-    public Stat _bulletSpeed;
-    
-    
+    private Stat _damage;
+    private Stat _resistency;
+    private Stat _attackSpeed;
+    private Stat _bulletSpeed;
+
+    private const float MAX_MONEY = 1000000;
+    private Currency _currency;
     
     
     private void Awake()
@@ -26,6 +27,8 @@ public class PlayerStats : MonoBehaviour, IDamagable
         _resistency = new Stat(5f, "Resistency");
         _attackSpeed = new Stat(.4f, "Attack Speed");
         _bulletSpeed = new Stat(10f, "Bullet Speed");
+
+        _currency = new Currency(100, "µ");
     }
 
 

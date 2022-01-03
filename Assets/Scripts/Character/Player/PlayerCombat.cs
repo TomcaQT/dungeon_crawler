@@ -15,6 +15,11 @@ public class PlayerCombat : MonoBehaviour
     private void Awake()
     {
         _playerStats = GetComponent<PlayerStats>();
+        
+    }
+
+    private void Start()
+    {
         // Instant shoot
         timeToAttack = _playerStats.AttackSpeed;
     }
