@@ -7,6 +7,18 @@ public class PlayerCombat : MonoBehaviour
 {
     [SerializeField] private GameObject _tempBullet;
 
+    private PlayerStats _playerStats;
+    private float timeToAttack;
+    
+
+
+    private void Awake()
+    {
+        _playerStats = GetComponent<PlayerStats>();
+        // Instant shoot
+        timeToAttack = _playerStats.AttackSpeed;
+    }
+
 
     private void Update()
     {
@@ -15,8 +27,12 @@ public class PlayerCombat : MonoBehaviour
 
     private void GetInput()
     {
-        if(Input.GetButtonDown("Fire1"))
+        timeToAttack += Time.deltaTime;
+        if (Input.GetButtonDown("Fire1") && timeToAttack >= _playerStats.AttackSpeed)
+        {
             Shoot();
+            timeToAttack = 0f;
+        }
             
     }
 
@@ -25,7 +41,7 @@ public class PlayerCombat : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 lookingDir =  mousePosition - transform.position;
         var bullet = Instantiate(_tempBullet, transform.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().Initialize(gameObject);
+        bullet.GetComponent<Bullet>().Initialize(gameObject,_playerStats.Damage,_playerStats.BulletSpeed);
         bullet.GetComponent<Bullet>().Shoot(lookingDir);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Threading.Tasks;
+using Unity.Collections;
 using UnityEngine;
 
 //Maybe useful in UI
@@ -13,12 +14,12 @@ using UnityEngine;
 public class Resource
 {
 
-    private string _name; // ??
-    private float _maxValue;
-    private float _value;
+    [SerializeField] private string _name; // ??
+    [SerializeField] private float _maxValue;
+    [SerializeField][ReadOnly] private float _value;
 
-    private float _regenPerSec;
-    private bool _isRegenerating = false;
+    [SerializeField] private float _regenPerSec;
+    [SerializeField][ReadOnly] private bool _isRegenerating = false;
     
     public event EventHandler OnResourceChange;
 
@@ -54,10 +55,10 @@ public class Resource
     }
 
     /// <summary>
-    /// Taking amount from resource.
+    /// Taking amount from resource. False if value is above zero
     /// </summary>
     /// <param name="amount">Amount</param>
-    /// <returns> False if value is above zero, true if value after sub is below zero.</returns>
+    /// <returns> False if value is above zero, true if value after sub is below or equal zero.</returns>
     public bool Take(float amount)
     {
         if (amount <= 0f)
