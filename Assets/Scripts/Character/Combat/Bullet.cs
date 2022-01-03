@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<BoxCollider2D>();
-        _collider.enabled = false;
+        //_collider.enabled = false;
     }
 
     private void Start()
@@ -42,7 +42,7 @@ public class Bullet : MonoBehaviour
     
     public void Shoot(Vector3 direction)
     {
-        _collider.enabled = true;
+        //_collider.enabled = true;
         //_rigidbody.AddForce(direction.normalized * _speed, ForceMode2d);
         _rigidbody.velocity = direction.normalized * _speed;
         _direction = direction.normalized;
@@ -50,13 +50,9 @@ public class Bullet : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"{_sender.layer} x {gameObject.layer}");
         if (other.gameObject.layer == gameObject.layer)
-        {
             return;
-        }
         
-            
         var target = other.GetComponent<IDamagable>();
         if (target != null)
         {
