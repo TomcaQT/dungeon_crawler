@@ -6,31 +6,31 @@ using UnityEngine;
 public class Stat
 {
     private string _name;
-    private int _value;
+    private float _value;
     //private int _initialValue;
     
-    public Stat(int value, string name = "defaultName")
+    public Stat(float value, string name = "defaultName")
     {
         _value = value;
         
         _name = name;
     }
 
-    public void Increase(int amount = 1)
+    public void Increase(float amount = 1f)
     {
         if (amount < 0)
             return;
         _value += amount;
     }
 
-    public void Decrease(int amount = 1)
+    public void Decrease(float amount = 1f)
     {
         if (amount < 0 && _value - amount < 0)
             return;
         _value -= amount;
     }
 
-    public void ChangeStatTemporary(int newValue, float time)
+    public void ChangeStatTemporary(float newValue, float time)
     {
         if(newValue < 0 || time < 0f)
             return;
@@ -39,15 +39,15 @@ public class Stat
 #pragma warning restore 4014
     }
 
-    private async Task ChangeStatOnTime(int newValue, float time)
+    private async Task ChangeStatOnTime(float newValue, float time)
     {
-        int oldValue = _value;
+        float oldValue = _value;
         _value = newValue;
         await Task.Delay((int)time * 1000);
         _value = oldValue;
     }
 
-    public int Value => _value;
+    public float Value => _value;
     public string Name => _name;
 
 }
