@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Timeline;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Enemy))]
 public class EnemyController : MonoBehaviour
@@ -28,6 +29,8 @@ public class EnemyController : MonoBehaviour
     {
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
+
+        timeToAttack = Random.Range(0f, _attackSpeed);
     }
 
     public virtual void LoadData(EnemyData enemyData)
@@ -36,7 +39,7 @@ public class EnemyController : MonoBehaviour
         _attackSpeed = enemyData.AttackSpeed;
     }
 
-    private float timeToAttack = 0f;
+    private float timeToAttack;
     
     private void Update()
     {
