@@ -9,9 +9,18 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _maxLifetime = 5f;
 
     [SerializeField] private float _damage = 10f;
-
+    [SerializeField] private bool _isReflecting = false; 
     private GameObject _sender;
-    
+
+    private Vector3 _direction;
+
+    private Rigidbody2D _rigidbody;
+
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
     private void Start()
     {
         Destroy(gameObject,_maxLifetime);
@@ -29,7 +38,9 @@ public class Bullet : MonoBehaviour
     
     public void Shoot(Vector3 direction)
     {
-        GetComponent<Rigidbody2D>().AddForce(direction.normalized * _speed, ForceMode2D.Impulse);
+        //_rigidbody.AddForce(direction.normalized * _speed, ForceMode2d);
+        _rigidbody.velocity = direction.normalized * _speed;
+        _direction = direction.normalized;
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -40,6 +51,20 @@ public class Bullet : MonoBehaviour
             target.TakeDamage(_damage);
             //TODO: Spawn effect
             Destroy(gameObject);
+        }
+        else if (target == null && !other.TryGetComponent<Bullet>(out var bullet)) // Not damagable
+        {
+            if (!_isReflecting)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            ContactPoint2D[] contacts = new ContactPoint2D[10];
+            other.GetContacts(contacts);
+
+            Vector3 currentBulletMoveVector = _direction;
+            Vector3 newBulletMoveVector = Vector3.Reflect(currentBulletMoveVector, contacts[0].normal);
+            Shoot(newBulletMoveVector);
         }
     }
 }

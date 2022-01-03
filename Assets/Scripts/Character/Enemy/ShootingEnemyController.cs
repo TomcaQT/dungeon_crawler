@@ -15,6 +15,7 @@ public class ShootingEnemyController : EnemyController
         var shootingEnemyData = (ShootingEnemyData) enemyData;
         _bullet = shootingEnemyData.BulletProjectile;
 
+        _agent.stoppingDistance = shootingEnemyData.StopDistance;
     }
     
     protected override void Attack()

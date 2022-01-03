@@ -12,6 +12,7 @@ public abstract class EnemyData : ScriptableObject
 
     public string Description; //???
 
+    public float Hp;
     public float Damage;
     public float AttackSpeed;
 

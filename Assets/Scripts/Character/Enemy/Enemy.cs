@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour, IDamagable
     private void Awake()
     {
         //Load Enemy Data
-        _hp = new Resource(20f, "health");
+        
 
         _enemyController = GetComponent<EnemyController>();
     }
@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour, IDamagable
     public void LoadData()
     {
         //TODO Loading data
-        
+        _hp = new Resource(_enemyData.Hp, "health");
        _enemyController.LoadData(_enemyData);
     }
     
