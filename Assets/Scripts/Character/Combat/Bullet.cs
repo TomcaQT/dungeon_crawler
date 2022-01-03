@@ -16,6 +16,13 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject,_maxLifetime);
     }
 
+    public void Initialize(float damage = 10f, float speed = 10f, float maxLifetime = 5f)
+    {
+        _damage = damage;
+        _speed = speed;
+        _maxLifetime = maxLifetime;
+    }
+    
     public void Shoot(Vector3 direction)
     {
         GetComponent<Rigidbody2D>().AddForce(direction.normalized * _speed, ForceMode2D.Impulse);
