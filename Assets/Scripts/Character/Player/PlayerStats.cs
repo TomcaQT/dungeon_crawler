@@ -15,7 +15,7 @@ public class PlayerStats : MonoBehaviour, IDamagable
     private Stat _bulletSpeed;
 
     private const float MAX_MONEY = 1000000;
-    private Currency _currency;
+    public Currency Currency;
     
     
     private void Awake()
@@ -28,7 +28,17 @@ public class PlayerStats : MonoBehaviour, IDamagable
         _attackSpeed = new Stat(.4f, "Attack Speed");
         _bulletSpeed = new Stat(10f, "Bullet Speed");
 
-        _currency = new Currency(100, "µ");
+        Currency = new Currency(100, "µ");
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        var collectible = other.GetComponent<ICollectible>();
+        if (collectible != null && (Input.GetKeyDown(KeyCode.E) || collectible.AutoCollect))
+        {
+            collectible.OnPickUp(this);
+            Destroy(other.gameObject);
+        }
     }
 
 
