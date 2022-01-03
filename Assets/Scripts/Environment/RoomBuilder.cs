@@ -102,7 +102,8 @@ public class RoomBuilder : MonoBehaviour
     {
         foreach(Transform child in parent)
         {
-            Destroy(child.gameObject);
+            if(child.gameObject.name != "Background")
+                Destroy(child.gameObject);
         }
     }
 

@@ -15,5 +15,21 @@ public class EnemyData : ScriptableObject
     public float Damage;
 
     public LootTable LootTable;
+    
+    [Header("Movement")] public float StopDistance = 0f;
 
+}
+
+
+[CreateAssetMenu(fileName = "ShootingEnemyData",menuName = "Enemies/ShootingEnemy")]
+public class ShootingEnemyData : EnemyData
+{
+
+    //Just setting default values to inherited properties
+    public ShootingEnemyData()
+    {
+        StopDistance = 5f;
+    }
+
+    [Header("Shooting")] public GameObject BulletProjectile;
 }
