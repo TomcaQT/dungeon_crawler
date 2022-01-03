@@ -15,10 +15,13 @@ public class Bullet : MonoBehaviour
     private Vector3 _direction;
 
     private Rigidbody2D _rigidbody;
+    private BoxCollider2D _collider;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _collider = GetComponent<BoxCollider2D>();
+        _collider.enabled = false;
     }
 
     private void Start()
@@ -31,6 +34,7 @@ public class Bullet : MonoBehaviour
     public void Initialize(GameObject sender,float damage = 10f, float speed = 10f, float maxLifetime = 5f)
     {
         _sender = sender;
+        gameObject.layer = sender.layer;
         _damage = damage;
         _speed = speed;
         _maxLifetime = maxLifetime;
@@ -38,6 +42,7 @@ public class Bullet : MonoBehaviour
     
     public void Shoot(Vector3 direction)
     {
+        _collider.enabled = true;
         //_rigidbody.AddForce(direction.normalized * _speed, ForceMode2d);
         _rigidbody.velocity = direction.normalized * _speed;
         _direction = direction.normalized;
@@ -45,8 +50,15 @@ public class Bullet : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log($"{_sender.layer} x {gameObject.layer}");
+        if (other.gameObject.layer == gameObject.layer)
+        {
+            return;
+        }
+        
+            
         var target = other.GetComponent<IDamagable>();
-        if (target != null && other.gameObject != _sender)
+        if (target != null)
         {
             target.TakeDamage(_damage);
             //TODO: Spawn effect
@@ -66,5 +78,6 @@ public class Bullet : MonoBehaviour
             Vector3 newBulletMoveVector = Vector3.Reflect(currentBulletMoveVector, contacts[0].normal);
             Shoot(newBulletMoveVector);
         }
+        
     }
 }

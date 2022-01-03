@@ -25,4 +25,9 @@ public static class Utils
                 return Color.white;
         }
     }
+
+    public static int LayerToOpposite(string name) =>
+        LayerMask.NameToLayer(name) == LayerMask.NameToLayer("Player")
+            ? LayerMask.NameToLayer("Enemy")
+            : LayerMask.NameToLayer("Player");
 }
