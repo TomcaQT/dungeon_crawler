@@ -9,15 +9,19 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _maxLifetime = 5f;
 
     [SerializeField] private float _damage = 10f;
-    
+
+    private GameObject _sender;
     
     private void Start()
     {
         Destroy(gameObject,_maxLifetime);
     }
 
-    public void Initialize(float damage = 10f, float speed = 10f, float maxLifetime = 5f)
+    public void SetSender(GameObject sender) => _sender = sender;
+    
+    public void Initialize(GameObject sender,float damage = 10f, float speed = 10f, float maxLifetime = 5f)
     {
+        _sender = sender;
         _damage = damage;
         _speed = speed;
         _maxLifetime = maxLifetime;
@@ -30,8 +34,8 @@ public class Bullet : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        var target = other.GetComponent<Enemy>();
-        if (target != null)
+        var target = other.GetComponent<IDamagable>();
+        if (target != null && other.gameObject != _sender)
         {
             target.TakeDamage(_damage);
             //TODO: Spawn effect

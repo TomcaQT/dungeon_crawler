@@ -8,4 +8,6 @@ public class ShootingEnemyData : EnemyData
 
 
     [Header("Shooting")] public GameObject BulletProjectile;
+
+   
 }

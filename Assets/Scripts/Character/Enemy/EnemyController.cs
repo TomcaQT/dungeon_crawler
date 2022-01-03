@@ -17,7 +17,6 @@ public class EnemyController : MonoBehaviour
     protected float _damage;
     protected float _attackSpeed;
     
-    [SerializeField] private EnemyData _enemyData;
     
     private void Awake()
     {
@@ -29,16 +28,12 @@ public class EnemyController : MonoBehaviour
     {
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
-
-        LoadData();
     }
 
-    public virtual void LoadData()
+    public virtual void LoadData(EnemyData enemyData)
     {
-        _damage = _enemyData.Damage;
-        _attackSpeed = _enemyData.AttackSpeed;
-
-        GetComponent<Enemy>().LoadData(_enemyData);
+        _damage = enemyData.Damage;
+        _attackSpeed = enemyData.AttackSpeed;
     }
 
     private float timeToAttack = 0f;

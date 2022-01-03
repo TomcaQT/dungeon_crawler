@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e8e315704ed36f4dbdcba5f0f291de1, type: 3}
-  m_Name: tmp
+  m_Script: {fileID: 11500000, guid: bd2ed4e166c845f4921d76faf8ecc380, type: 3}
+  m_Name: MovingEnemyData
   m_EditorClassIdentifier: 
-  Name: tmp
-  Description: ymp
-  Damage: 2
-  AttackSpeed: 0
+  Name: Integral
+  Description: Int
+  Damage: 5
+  AttackSpeed: 2
   LootTable:
     DropChances: []
   StopDistance: 0

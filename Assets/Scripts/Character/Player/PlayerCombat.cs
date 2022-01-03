@@ -25,6 +25,7 @@ public class PlayerCombat : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 lookingDir =  mousePosition - transform.position;
         var bullet = Instantiate(_tempBullet, transform.position, Quaternion.identity);
+        bullet.GetComponent<Bullet>().Initialize(gameObject);
         bullet.GetComponent<Bullet>().Shoot(lookingDir);
     }
 }

@@ -8,12 +8,12 @@ public class ShootingEnemyController : EnemyController
 
     private GameObject _bullet;
 
-   // [SerializeField]private ShootingEnemyData _enemyData;
     
-    public override void LoadData()
+    public override void LoadData(EnemyData enemyData)
     {
-        base.LoadData();
-        //_bullet = _enemyData.BulletProjectile;
+        base.LoadData(enemyData);
+        var shootingEnemyData = (ShootingEnemyData) enemyData;
+        _bullet = shootingEnemyData.BulletProjectile;
 
     }
     
@@ -21,7 +21,7 @@ public class ShootingEnemyController : EnemyController
     {
         var bulletObj = Instantiate(_bullet, transform.position, Quaternion.identity);
         var bullet = bulletObj.GetComponent<Bullet>();
-        bullet.Initialize(_damage);
+        bullet.Initialize(gameObject,_damage);
         
         
         Vector2 lookingDir =  _target.position - transform.position;

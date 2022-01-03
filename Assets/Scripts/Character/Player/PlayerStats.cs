@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : MonoBehaviour, IDamagable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private float testHP = 25f;
+
+    public void TakeDamage(float amount)
     {
-        
+        testHP -= amount;
+        if (testHP <= 0)
+            Debug.Log("Player Die");
     }
 }

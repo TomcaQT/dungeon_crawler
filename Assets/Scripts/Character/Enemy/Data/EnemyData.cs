@@ -4,8 +4,8 @@ using Items;
 using JetBrains.Annotations;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BaseEnemyData",menuName = "Enemies/BaseEnemy")]
-public class EnemyData : ScriptableObject
+
+public abstract class EnemyData : ScriptableObject
 {
 
     public string Name;
@@ -18,5 +18,6 @@ public class EnemyData : ScriptableObject
     public LootTable LootTable;
     
     [Header("Movement")] public float StopDistance = 0f;
+
 
 }

@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour, IDamagable
     private EnemyController _enemyController;
     
     public event EventHandler OnEnemyDeath;
+
+    [SerializeField] private EnemyData _enemyData;
     
     private void Awake()
     {
@@ -20,11 +22,16 @@ public class Enemy : MonoBehaviour, IDamagable
         _enemyController = GetComponent<EnemyController>();
     }
 
-    public void LoadData(EnemyData enemyData)
+    private void Start()
+    {
+        LoadData();
+    }
+
+    public void LoadData()
     {
         //TODO Loading data
         
-       
+       _enemyController.LoadData(_enemyData);
     }
     
     public void TakeDamage(float damage)
