@@ -11,9 +11,14 @@ public class ItemObject : MonoBehaviour, ICollectible
     {
         _item = item;
         //TODO Change sprite
+        GetComponent<SpriteRenderer>().sprite = _item.ItemSprite;
     }
 
-    public bool AutoCollect { get; set; }
+    public bool AutoCollect
+    {
+        get => false;
+        set => throw new System.NotImplementedException();
+    }
     
     public void OnPickUp(PlayerStats playerStats) => _item.OnPickup(playerStats);
 

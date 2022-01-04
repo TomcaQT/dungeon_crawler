@@ -33,7 +33,7 @@ public class PlayerCombat : MonoBehaviour
     private void GetInput()
     {
         timeToAttack += Time.deltaTime;
-        if (Input.GetButtonDown("Fire1") && timeToAttack >= _playerStats.AttackSpeed)
+        if (Input.GetButton("Fire1") && timeToAttack >= _playerStats.AttackSpeed)
         {
             Shoot();
             timeToAttack = 0f;

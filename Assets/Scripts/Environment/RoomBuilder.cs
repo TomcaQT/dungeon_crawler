@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
-using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine;
+using Items;
 
 public class RoomBuilder : MonoBehaviour
 {
@@ -17,12 +17,15 @@ public class RoomBuilder : MonoBehaviour
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _endPortal;
     [SerializeField] private List<GameObject> _enemies;
-    [SerializeField] private List<GameObject> _items;
+    [SerializeField] private List<ItemData> _items;
 
+    private PrefabManager _prefabManager;
+    
 
     private void Awake()
     {
         _camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        _prefabManager = GameObject.Find("Prefab Manager").GetComponent<PrefabManager>();
     }
 
     private void Start()
@@ -62,7 +65,11 @@ public class RoomBuilder : MonoBehaviour
                 if (room.Grid.Get(x, y) == RoomEntity.ENEMY)
                     toSpawn = GetRandomFromList(_enemies);
                 else if (room.Grid.Get(x, y) == RoomEntity.BOOST)
-                    toSpawn = GetRandomFromList(_items);
+                {
+                    var data = GetRandomFromList(_items);
+                    var item = Instantiate(_prefabManager.ItemPrefab, new Vector3(x, y, 0), Quaternion.identity,_roomParent);
+                    item.GetComponent<ItemObject>().Init(data);
+                }
                 else if (room.Grid.Get(x, y) == RoomEntity.START)
                     _player.transform.position = new Vector3(x, y, 0);
                 else if (room.Grid.Get(x, y) == RoomEntity.END)

@@ -34,7 +34,7 @@ public class PlayerStats : MonoBehaviour, IDamagable
     private void OnTriggerStay2D(Collider2D other)
     {
         var collectible = other.GetComponent<ICollectible>();
-        if (collectible != null && (Input.GetKeyDown(KeyCode.E) || collectible.AutoCollect))
+        if (collectible != null && (Input.GetKey(KeyCode.E) || collectible.AutoCollect))
         {
             collectible.OnPickUp(this);
             Destroy(other.gameObject);

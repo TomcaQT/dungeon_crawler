@@ -60,7 +60,7 @@ public class Bullet : MonoBehaviour
             //TODO: Spawn effect
             Destroy(gameObject);
         }
-        else if (target == null && !other.TryGetComponent<Bullet>(out var bullet)) // Not damagable
+        else if (!other.TryGetComponent<ICollectible>(out var col) && !other.TryGetComponent<Bullet>(out var bullet)) // Not damagable
         {
             if (!_isReflecting)
             {

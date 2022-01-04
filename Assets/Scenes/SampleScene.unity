@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 179481568}
+  - component: {fileID: 179481569}
   m_Layer: 0
   m_Name: Prefab Manager
   m_TagString: Untagged
@@ -153,6 +154,20 @@ Transform:
   m_Father: {fileID: 1416528338}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &179481569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179481567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebccdd5cd91745d4091bd5399ea61eab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyPrefab: {fileID: 0}
+  ItemPrefab: {fileID: 5398179462477913297, guid: a81b869b4006bbf40a61fbbc5b035442, type: 3}
 --- !u!1 &223075011
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,8 +286,8 @@ MonoBehaviour:
   - {fileID: 244662593221274766, guid: 8cfa76e65bc98ca42b92bcef8b7aecfd, type: 3}
   - {fileID: 4734139248314442222, guid: 156719e5719a2a34fa7dc0cdc1dd6dbd, type: 3}
   _items:
-  - {fileID: 8567880062419901111, guid: b33ba775ded4f6e44b17eb82cd2154ac, type: 3}
-  - {fileID: 5495659848524307670, guid: 12b33d6f979ce4149a2a9a81b0d7401c, type: 3}
+  - {fileID: 11400000, guid: daf043b43a1821549bf4bfe9488c183c, type: 2}
+  - {fileID: 11400000, guid: 33af3e0d9ce6cbf43909ebbf2c2a6c7c, type: 2}
 --- !u!1 &277472546 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5678224662679486672, guid: a5e9bead8f811b746b042b6d549b2c95, type: 3}
@@ -438,11 +453,11 @@ MonoBehaviour:
     probability: 0.15
   _boostCountProbability:
   - value: 0
-    probability: 0.75
+    probability: 0
   - value: 1
-    probability: 0.2
+    probability: 1
   - value: 2
-    probability: 0.05
+    probability: 0
 --- !u!1 &1244403987
 GameObject:
   m_ObjectHideFlags: 0
