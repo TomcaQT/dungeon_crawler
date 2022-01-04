@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Items
 {
-    [CreateAssetMenu(fileName = "ItemData",menuName = "Items/BaseItem")]
-    public class ItemData : ScriptableObject
+    
+    
+    
+    public abstract class ItemData : ScriptableObject
     {
         public string Name;
 
@@ -14,10 +18,21 @@ namespace Items
         public ItemQuality ItemQuality;
 
         public GameObject ItemPrefab;
-        
-        public void OnPickUp()
+
+        public abstract void OnPickup(PlayerStats player);
+
+    }
+
+    [CreateAssetMenu(fileName = "BoostingItemData",menuName = "Items/BoostingItem")]
+    public class BoostingItemData : ItemData
+    {
+
+        public string ToBoost;
+        public float Amount;
+        public override void OnPickup(PlayerStats player)
         {
-            
+            player.IncreaseStatOrResource(ToBoost,Amount);
         }
     }
+    
 }

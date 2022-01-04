@@ -46,7 +46,7 @@ public class EnemyController : MonoBehaviour
         _agent.SetDestination(_target.position);
         var distance = Vector3.Distance(transform.position, _target.position);
 
-        RotateToTarget();
+        //RotateToTarget();
 
         timeToAttack += Time.deltaTime;
         if (timeToAttack >= _attackSpeed)

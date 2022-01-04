@@ -20,13 +20,13 @@ public class PlayerStats : MonoBehaviour, IDamagable
     
     private void Awake()
     {
-        _hp = new Resource(100f, "Hitpoints", 1f);
+        _hp = new Resource(100f, "Hp", 1f);
         _energy = new Resource(100f, "Energy", 20f);
 
         _damage = new Stat(10f, "Damage");
         _resistency = new Stat(5f, "Resistency");
-        _attackSpeed = new Stat(.4f, "Attack Speed");
-        _bulletSpeed = new Stat(10f, "Bullet Speed");
+        _attackSpeed = new Stat(.4f, "AttackSpeed");
+        _bulletSpeed = new Stat(10f, "BulletSpeed");
 
         Currency = new Currency(100, "µ");
     }
@@ -49,6 +49,38 @@ public class PlayerStats : MonoBehaviour, IDamagable
     }
     
     #region Resources and Stats accessors
+
+    public void IncreaseStatOrResource(string toBoost, float amount)
+    {
+        switch (toBoost)
+        {
+            case "Hp":
+                _hp.IncreaseMax(amount);
+                break;
+            case "Energy":
+                _energy.IncreaseMax(amount);
+                break;
+            case "Damage":
+                _damage.Increase(amount);
+                break;
+            case "Resistency":
+                _resistency.Increase(amount);
+                break;
+            case "AttackSpeed":
+                _attackSpeed.Decrease(amount);
+                break;
+            case "BulletSpeed":
+                _bulletSpeed.Increase(amount);
+                break;
+            case "Money":
+                Currency.Add(Mathf.FloorToInt(amount));
+                break;
+            default:
+                Debug.LogError("No known stat to boost");
+                break;
+        }
+    }
+    
     public bool TryTakeEnergy(float amount) => _energy.TryTake(amount);
 
     public float Damage => _damage.Value;
