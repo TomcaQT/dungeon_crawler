@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Items;
 using UnityEngine;
 
-public class ItemObject : MonoBehaviour
+public class ItemObject : MonoBehaviour, ICollectible
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private ItemData _item;
+
+    public void Init(ItemData item)
     {
-        
+        _item = item;
+        //TODO Change sprite
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool AutoCollect { get; set; }
+    
+    public void OnPickUp(PlayerStats playerStats) => _item.OnPickup(playerStats);
+
 }

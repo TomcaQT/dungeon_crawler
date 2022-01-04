@@ -16,5 +16,5 @@ MonoBehaviour:
   Description: 
   ItemQuality: 0
   ItemPrefab: {fileID: 0}
-  ToBoost: Hp
+  ToBoost: BulletSpeed
   Amount: 0
