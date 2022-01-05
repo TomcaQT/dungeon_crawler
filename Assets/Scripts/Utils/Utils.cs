@@ -30,4 +30,12 @@ public static class Utils
         LayerMask.NameToLayer(name) == LayerMask.NameToLayer("Player")
             ? LayerMask.NameToLayer("Enemy")
             : LayerMask.NameToLayer("Player");
+
+    public static T GetNextOver<T>(List<T> data, ref int curr)
+    {
+        curr++;
+        if (curr >= data.Count)
+            curr = 0;
+        return data[curr];
+    }
 }

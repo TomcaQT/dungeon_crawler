@@ -304,6 +304,9 @@ GameObject:
   - component: {fileID: 7638742544841405419}
   - component: {fileID: 185228648728624182}
   - component: {fileID: 8779005945418420126}
+  - component: {fileID: 8513545725179577815}
+  - component: {fileID: 8136487111527973566}
+  - component: {fileID: 6851941317958403308}
   m_Layer: 7
   m_Name: MatrixBoss
   m_TagString: Untagged
@@ -374,6 +377,52 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8513545725179577815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8034653275129300049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5aeb6d0f5684d148b16fb14e8a0150b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp:
+    _name: 
+    _maxValue: 0
+    _value: 0
+    _regenPerSec: 0
+    _isRegenerating: 0
+  _enemyData: {fileID: 11400000, guid: e7f9c92553e73244e8e81eb03c7df7c9, type: 2}
+--- !u!114 &8136487111527973566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8034653275129300049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fed2bca340f05f48a2fb15653f7b9df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderers:
+  - {fileID: 2725656421017210651}
+--- !u!114 &6851941317958403308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8034653275129300049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252bfdbfd8c375b449eabb4626d72c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _matrixText: {fileID: 847243461195718094}
 --- !u!1 &8819781192738909401
 GameObject:
   m_ObjectHideFlags: 0

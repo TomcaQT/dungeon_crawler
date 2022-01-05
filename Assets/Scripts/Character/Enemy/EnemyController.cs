@@ -61,6 +61,11 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public virtual void OnHpChanged(object sender, ResourceChangeEventArgs e)
+    {
+        Debug.Log("HP change");
+    }
+    
     protected virtual void Attack()
     {
         
@@ -72,8 +77,7 @@ public class EnemyController : MonoBehaviour
         float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
-    
-    
-    
+
+ 
     
 }

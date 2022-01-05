@@ -24,14 +24,21 @@ public class Enemy : MonoBehaviour, IDamagable
 
     private void Start()
     {
+       
+        
         LoadData();
     }
 
-    public void LoadData()
+    public void LoadData(EnemyData data = null)
     {
         //TODO Loading data
         _hp = new Resource(_enemyData.Hp, "health");
-       _enemyController.LoadData(_enemyData);
+        _hp.OnResourceChange += _enemyController.OnHpChanged;
+        
+        if(data == null)
+            _enemyController.LoadData(_enemyData);
+        else
+            _enemyController.LoadData(data);
     }
     
     public void TakeDamage(float damage)
@@ -45,10 +52,14 @@ public class Enemy : MonoBehaviour, IDamagable
         
     }
 
+    
+    
     private void DropItems()
     {
         
     }
-    
-    
+
+
+    public EnemyData Data => _enemyData;
+
 }

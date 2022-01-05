@@ -5,10 +5,12 @@ using Unity.Collections;
 using UnityEngine;
 
 //Maybe useful in UI
-//public class OnResourceChangeEventArgs : EventArgs
-//{
-//    public bool IsRegenerating;
-//}
+public class ResourceChangeEventArgs : EventArgs
+{
+    public float Value;
+    public float Percentage01;
+    public bool IsRegenerating;
+}
 
 [System.Serializable]
 public class Resource
@@ -21,7 +23,7 @@ public class Resource
     [SerializeField] private float _regenPerSec;
     [SerializeField][ReadOnly] private bool _isRegenerating = false;
     
-    public event EventHandler OnResourceChange;
+    public event EventHandler<ResourceChangeEventArgs> OnResourceChange;
 
     public Resource(float maxValue = 100f, string name = "defaultName", float regenPerSec = 0f)
     {
@@ -31,12 +33,22 @@ public class Resource
         _regenPerSec = regenPerSec;
     }
 
+    public ResourceChangeEventArgs GetEventArgs()
+    {
+        return new ResourceChangeEventArgs()
+        {
+            Value = _value,
+            Percentage01 = Percentage01,
+            IsRegenerating = _isRegenerating
+        };
+    }
+    
     public void ChangeMax(float newMax)
     {
         if (newMax <= 0f)
             throw new ArgumentException();
         _maxValue = newMax;
-        OnResourceChange?.Invoke(this, new EventArgs());
+        OnResourceChange?.Invoke(this, GetEventArgs());
     }
     
     public void IncreaseMax(float delta)
@@ -51,7 +63,7 @@ public class Resource
         if (amount < 0f)
             return;
         _value = Mathf.Min(_value + amount, _maxValue);
-        OnResourceChange?.Invoke(this, new EventArgs());
+        OnResourceChange?.Invoke(this, GetEventArgs());
     }
 
     /// <summary>
@@ -65,7 +77,7 @@ public class Resource
             amount = 0f;
         _value = Mathf.Max(_value - amount, 0f);
         StartRegen();
-        OnResourceChange?.Invoke(this, new EventArgs());
+        OnResourceChange?.Invoke(this, GetEventArgs());
         return _value <= 0f;
     }
 

@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: Matrix
   Hp: 100
   Damage: 1
-  AttackSpeed: 5
+  AttackSpeed: 1
   LootTable:
     DropChances: []
   StopDistance: 1.35
@@ -26,3 +26,11 @@ MonoBehaviour:
   PhaseDamageMultipliers:
   - 100
   - 0
+  PhaseAttackSpeedBoost:
+  - 1
+  - 1
+  Bullet: {fileID: 7528107958429836074, guid: 22e3092febeab234d82c2a9c9a77f316, type: 3}
+  Movement: 2
+  WaypointsOffset:
+  - {x: -5, y: 0}
+  - {x: 5, y: 0}

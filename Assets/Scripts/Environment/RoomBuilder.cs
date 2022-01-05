@@ -19,7 +19,7 @@ public class RoomBuilder : MonoBehaviour
     [SerializeField] private GameObject _endPortal;
     [SerializeField] private List<GameObject> _enemies;
     [SerializeField] private List<ItemData> _items;
-    [SerializeField] private List<Pair<GameObject, int>> _boss;
+    [SerializeField] private List<Pair<GameObject, BossData>> _boss;
     
     
     private PrefabManager _prefabManager;
@@ -105,7 +105,7 @@ public class RoomBuilder : MonoBehaviour
                     var randomBoss = GetRandomFromList(_boss);
                     var boss = Instantiate(randomBoss.First, new Vector3(x, y, 0), Quaternion.identity, _roomParent);
                     var bossEnemy = boss.GetComponent<Enemy>();
-                    //bossEnemy.LoadData(randomBoss.Second);
+                    bossEnemy.LoadData(randomBoss.Second);
                     enemies.Add(bossEnemy);
                 }
 
