@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamagable
 {
-    [SerializeField] private Resource _hp;
+    [SerializeField] protected Resource _hp;
 
-    private EnemyController _enemyController;
+    protected EnemyController _enemyController;
     
     public event EventHandler OnEnemyDeath;
 

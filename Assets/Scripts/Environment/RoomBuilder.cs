@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Helpers;
 using Random = UnityEngine.Random;
 using UnityEngine;
 using Items;
@@ -18,7 +19,9 @@ public class RoomBuilder : MonoBehaviour
     [SerializeField] private GameObject _endPortal;
     [SerializeField] private List<GameObject> _enemies;
     [SerializeField] private List<ItemData> _items;
-
+    [SerializeField] private List<Pair<GameObject, int>> _boss;
+    
+    
     private PrefabManager _prefabManager;
     
 
@@ -33,6 +36,29 @@ public class RoomBuilder : MonoBehaviour
         //BuildRoom(GetTestingRoom());
     }
 
+    
+
+
+    public Room GetBossRoom()
+    {
+        Room room = new Room();
+        room.Number = 1;
+        room.Size = new Vector2Int(20, 20);
+        room.Shape = RoomShape.Square;
+
+        room.EnemyCount = 1;
+        room.BoostCount = 1;
+
+        var roomGrid = new Grid<RoomEntity>(20,20);
+        roomGrid.Set(0,0,RoomEntity.End);
+        roomGrid.Set(10,0,RoomEntity.Start);
+        roomGrid.Set(10,15,RoomEntity.Boss);
+        room.Grid = roomGrid;
+        
+        room.RoomFlags = 0x01;
+        return room;
+    }
+    
     private Room GetTestingRoom()
     {
         Room room = new Room();
@@ -62,25 +88,33 @@ public class RoomBuilder : MonoBehaviour
             for (int y = 0; y < room.Grid.Height; y++)
             {
                 GameObject toSpawn = null;
-                if (room.Grid.Get(x, y) == RoomEntity.ENEMY)
+                if (room.Grid.Get(x, y) == RoomEntity.Enemy)
                     toSpawn = GetRandomFromList(_enemies);
-                else if (room.Grid.Get(x, y) == RoomEntity.BOOST)
+                else if (room.Grid.Get(x, y) == RoomEntity.Boost)
                 {
                     var data = GetRandomFromList(_items);
                     var item = Instantiate(_prefabManager.ItemPrefab, new Vector3(x, y, 0), Quaternion.identity,_roomParent);
                     item.GetComponent<ItemObject>().Init(data);
                 }
-                else if (room.Grid.Get(x, y) == RoomEntity.START)
+                else if (room.Grid.Get(x, y) == RoomEntity.Start)
                     _player.transform.position = new Vector3(x, y, 0);
-                else if (room.Grid.Get(x, y) == RoomEntity.END)
+                else if (room.Grid.Get(x, y) == RoomEntity.End)
                     toSpawn = _endPortal;
+                else if (room.Grid.Get(x, y) == RoomEntity.Boss)
+                {
+                    var randomBoss = GetRandomFromList(_boss);
+                    var boss = Instantiate(randomBoss.First, new Vector3(x, y, 0), Quaternion.identity, _roomParent);
+                    var bossEnemy = boss.GetComponent<Enemy>();
+                    //bossEnemy.LoadData(randomBoss.Second);
+                    enemies.Add(bossEnemy);
+                }
 
                 GameObject spawned = null;
                 if (toSpawn != null)
                     spawned = Instantiate(toSpawn, new Vector3(x, y, 0), Quaternion.identity,_roomParent);
-                if (room.Grid.Get(x, y) == RoomEntity.ENEMY && spawned != null)
+                if (room.Grid.Get(x, y) == RoomEntity.Enemy && spawned != null)
                     enemies.Add(spawned.GetComponent<Enemy>());
-                if (room.Grid.Get(x, y) == RoomEntity.END && spawned != null)
+                if (room.Grid.Get(x, y) == RoomEntity.End && spawned != null)
                     end = spawned;
 
 

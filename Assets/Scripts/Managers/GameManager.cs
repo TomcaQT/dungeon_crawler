@@ -25,6 +25,21 @@ public class GameManager : MonoBehaviour
         NextRoom();
     }
 
+    private void Update()
+    {
+        #if UNITY_EDITOR
+        if(Input.GetKeyDown(KeyCode.R))
+            TestBossRoom();
+        #endif
+    }
+
+    private void TestBossRoom()
+    {
+        _endPoint = _roomBuilder.BuildRoom(_roomBuilder.GetBossRoom(),out _enemies);
+        _enemies.ForEach(x => x.OnEnemyDeath += e_OnEnemyDeath);
+        _endPoint.GetComponent<End>().OnRoomEnd += e_OnRoomEnd;
+    }
+    
     public void NextRoom()
     {
         _endPoint = _roomBuilder.BuildRoom(_roomGenerator.GenerateNewRoom(),out _enemies);

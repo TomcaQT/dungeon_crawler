@@ -288,6 +288,9 @@ MonoBehaviour:
   _items:
   - {fileID: 11400000, guid: daf043b43a1821549bf4bfe9488c183c, type: 2}
   - {fileID: 11400000, guid: 33af3e0d9ce6cbf43909ebbf2c2a6c7c, type: 2}
+  _boss:
+  - _first: {fileID: 8034653275129300049, guid: 4c2e3ab074f12f743979b6d3bd8e8dc7, type: 3}
+    _second: 0
 --- !u!1 &277472546 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5678224662679486672, guid: a5e9bead8f811b746b042b6d549b2c95, type: 3}
@@ -339,7 +342,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 277472550}
   _smoothSpeed: 0.125
-  _offset: {x: 0, y: 0, z: -10}
+  _size: 8
+  _offset: {x: 0, y: 0, z: -15}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -614,7 +618,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421354703}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.47, y: -0.08, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 1}
   m_Children: []
   m_Father: {fileID: 223075012}

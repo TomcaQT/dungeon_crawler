@@ -17,6 +17,7 @@ public class EnemyController : MonoBehaviour
 
     protected float _damage;
     protected float _attackSpeed;
+    protected float timeToAttack;
     
     
     private void Awake()
@@ -39,9 +40,13 @@ public class EnemyController : MonoBehaviour
         _attackSpeed = enemyData.AttackSpeed;
     }
 
-    private float timeToAttack;
     
     private void Update()
+    {
+        EnemyBehaviour();
+    }
+
+    protected virtual void EnemyBehaviour()
     {
         _agent.SetDestination(_target.position);
         var distance = Vector3.Distance(transform.position, _target.position);
@@ -54,7 +59,6 @@ public class EnemyController : MonoBehaviour
             Attack();
             timeToAttack = 0f;
         }
-        
     }
 
     protected virtual void Attack()

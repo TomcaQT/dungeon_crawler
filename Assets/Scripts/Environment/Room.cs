@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public enum RoomEntity { NONE=0, SPACE, ENEMY, START, END, BOOST}
+public enum RoomEntity { None=0, Space, Enemy, Start, End, Boost, Boss, EnemyWaypoint}
+
 
 public class Room
 {
@@ -18,10 +17,10 @@ public class Room
     public Grid<RoomEntity> Grid;
     
     //FLAGS 0 - BossRoom 1- Shop
-    public int RoomFlags = 0x0;
+    public int RoomFlags = 0x00;
 
     public bool IsBossRoom => (RoomFlags & 0x1) != 0;
-    public bool IsShopRoom=> (RoomFlags & 0x01) != 0;
+    public bool IsShopRoom=> (RoomFlags & 0x10) != 0;
 
     
     

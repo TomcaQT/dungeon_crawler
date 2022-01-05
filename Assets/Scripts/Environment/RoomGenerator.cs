@@ -18,8 +18,8 @@ public class RoomGenerator : MonoBehaviour
 
     private void Start()
     {
-    }   
-
+        
+    }
 
     public Room GenerateNewRoom()
     {
@@ -35,28 +35,28 @@ public class RoomGenerator : MonoBehaviour
         room.Size = GetRandomIntSize(_roomSizeMin, _roomSizeMax);
         room.Shape = RoomShape.Square;
         room.Grid = new Grid<RoomEntity>(room.Size.x, room.Size.y);
-        room.Grid.SetWithBorder(room.Size.x / 2, room.Size.y / 2, RoomEntity.START, RoomEntity.SPACE);
-        room.Grid.Set(0, 0, RoomEntity.END);
+        room.Grid.SetWithBorder(room.Size.x / 2, room.Size.y / 2, RoomEntity.Start, RoomEntity.Space);
+        room.Grid.Set(0, 0, RoomEntity.End);
 
         room.EnemyCount = GetRandomCount(_enemyCountProbability);
         room.BoostCount = GetRandomCount(_boostCountProbability);
 
         for (int i = 0; i < room.EnemyCount; i++)
         {
-            var position = GetRandomFreePositionOnGrid(room.Grid, RoomEntity.NONE);
+            var position = GetRandomFreePositionOnGrid(room.Grid, RoomEntity.None);
             if(position.x >= 0 && position.y >= 0)
-                room.Grid.Set(position.x,position.y,RoomEntity.ENEMY);
+                room.Grid.Set(position.x,position.y,RoomEntity.Enemy);
         }
         
         for (int i = 0; i < room.BoostCount; i++)
         {
-            var position = GetRandomFreePositionOnGrid(room.Grid, RoomEntity.NONE);
+            var position = GetRandomFreePositionOnGrid(room.Grid, RoomEntity.None);
             if(position.x >= 0 && position.y >= 0)
-                room.Grid.Set(position.x,position.y,RoomEntity.BOOST);
+                room.Grid.Set(position.x,position.y,RoomEntity.Boost);
         }
 
-        //if(room.Number % 10 == 0)
-        //GetRandomBoss()
+        //if(room.Number % 2 == 0)
+            //GetRandomBoss()
         //else if(rng < chanceOnTreasure())
         //GetRandomTreasure
         //every 5th and 9th room
