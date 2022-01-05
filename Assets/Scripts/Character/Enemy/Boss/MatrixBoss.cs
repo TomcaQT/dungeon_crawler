@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -35,6 +32,7 @@ public class MatrixBoss : MonoBehaviour
             $"{Random.Range(0,10)} {Random.Range(0,10)} {Random.Range(0,10)} {Random.Range(0,10)} {Random.Range(0,10)}\n" +
             $"{Random.Range(0,10)} {Random.Range(0,10)} {Random.Range(0,10)} {Random.Range(0,10)} {Random.Range(0,10)}";
             time = 0f;
+            
         }
 
     }
