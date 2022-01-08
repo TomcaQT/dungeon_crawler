@@ -290,7 +290,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 33af3e0d9ce6cbf43909ebbf2c2a6c7c, type: 2}
   _boss:
   - _first: {fileID: 8034653275129300049, guid: 4c2e3ab074f12f743979b6d3bd8e8dc7, type: 3}
-    _second: 0
+    _second: {fileID: 0}
 --- !u!1 &277472546 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5678224662679486672, guid: a5e9bead8f811b746b042b6d549b2c95, type: 3}
@@ -647,6 +647,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 277472553, guid: a5e9bead8f811b746b042b6d549b2c95, type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 0ca2521f0eeb3bb4ab0690b8e29fbeb2, type: 2}
     - target: {fileID: 2260369316689914833, guid: a5e9bead8f811b746b042b6d549b2c95, type: 3}
       propertyPath: m_Sprite
       value: 

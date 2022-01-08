@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour, IDamagable
 {
 
+    [SerializeField] private WeaponItemData _weapon; 
+
     [SerializeField] private Resource _hp;
     [SerializeField] private Resource _energy; // ????
 
@@ -83,10 +85,31 @@ public class PlayerStats : MonoBehaviour, IDamagable
     
     public bool TryTakeEnergy(float amount) => _energy.TryTake(amount);
 
+    public WeaponItemData Weapon 
+    {
+        get => _weapon;
+        set => _weapon = value;
+    }
+    
     public float Damage => _damage.Value;
     public float Resistency => _resistency.Value;
     public float AttackSpeed => _attackSpeed.Value;
     public float BulletSpeed => _bulletSpeed.Value;
+
+    public void Heal(float amount) => _hp.Add(amount);
+
+    public void HealPercent(float percent)
+    {
+        percent = Mathf.Clamp(percent, 0f, 1f);
+        _hp.Add(_hp.MaxValue * percent);
+    }
+
+    public void UpgradeWeapon()
+    {
+        if (_weapon.ItemQuality == ItemQuality.Legendary)
+            return;
+        _weapon.ItemQuality++;
+    }
 
     #endregion
 }

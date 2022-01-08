@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    [SerializeField] private GameObject _tempBullet;
+    
 
     private PlayerStats _playerStats;
     private float timeToAttack;
@@ -45,7 +45,7 @@ public class PlayerCombat : MonoBehaviour
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 lookingDir =  mousePosition - transform.position;
-        var bullet = Instantiate(_tempBullet, transform.position, Quaternion.identity);
+        var bullet = Instantiate(_playerStats.Weapon.Bullet, transform.position, Quaternion.identity);
         bullet.GetComponent<Bullet>().Initialize(gameObject,_playerStats.Damage,_playerStats.BulletSpeed);
         bullet.GetComponent<Bullet>().Shoot(lookingDir);
     }
