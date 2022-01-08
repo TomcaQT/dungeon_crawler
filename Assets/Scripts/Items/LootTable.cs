@@ -9,6 +9,6 @@ namespace Items
     [System.Serializable]
     public class LootTable
     {
-        public List<ProbabilityValue<IEnumerable<ItemData>>> DropChances;
+        public List<ProbabilityValue<ItemData>> DropChances;
     }
 }

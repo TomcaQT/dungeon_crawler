@@ -18,5 +18,9 @@ MonoBehaviour:
   Damage: 5
   AttackSpeed: 2
   LootTable:
-    DropChances: []
+    DropChances:
+    - value: {fileID: 0}
+      probability: 0
+    - value: {fileID: 0}
+      probability: 0
   StopDistance: 0

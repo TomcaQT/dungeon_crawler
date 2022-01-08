@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour, IDamagable
@@ -40,6 +41,11 @@ public class PlayerStats : MonoBehaviour, IDamagable
         {
             collectible.OnPickUp(this);
             Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Shop") && Input.GetKey(KeyCode.E))
+        {
+            other.GetComponent<ShopSpot>().Buy();
         }
     }
 

@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
         #if UNITY_EDITOR
         if(Input.GetKeyDown(KeyCode.R))
             TestBossRoom();
+        if(Input.GetKeyDown(KeyCode.T))
+            TestShop();
         #endif
     }
 
@@ -37,6 +39,13 @@ public class GameManager : MonoBehaviour
     {
         _endPoint = _roomBuilder.BuildRoom(_roomBuilder.GetBossRoom(),out _enemies);
         _enemies.ForEach(x => x.OnEnemyDeath += e_OnEnemyDeath);
+        _endPoint.GetComponent<End>().OnRoomEnd += e_OnRoomEnd;
+    }
+    
+    private void TestShop()
+    {
+        _endPoint = _roomBuilder.BuildRoom(_roomBuilder.GetShop(),out _enemies);
+        //_enemies.ForEach(x => x.OnEnemyDeath += e_OnEnemyDeath);
         _endPoint.GetComponent<End>().OnRoomEnd += e_OnRoomEnd;
     }
     

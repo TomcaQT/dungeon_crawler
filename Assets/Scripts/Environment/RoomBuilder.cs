@@ -54,22 +54,23 @@ public class RoomBuilder : MonoBehaviour
         roomGrid.Set(10,0,RoomEntity.Start);
         roomGrid.Set(10,15,RoomEntity.Boss);
         room.Grid = roomGrid;
-        
+            
         room.RoomFlags = 0x01;
         return room;
     }
-    
-    private Room GetTestingRoom()
+
+    public Room GetShop()
     {
         Room room = new Room();
         room.Number = 1;
-        room.Size = new Vector2Int(20, 10);
+        room.Size = new Vector2Int(20, 20);
         room.Shape = RoomShape.Square;
 
-        room.EnemyCount = 1;
-        room.BoostCount = 1;
-
-        room.RoomFlags = 0x00;
+        var roomGrid = new Grid<RoomEntity>(20,20);
+        roomGrid.Set(0,0,RoomEntity.End);
+        roomGrid.Set(5,5,RoomEntity.Start);
+        room.Grid = roomGrid;
+        room.RoomFlags = 0x10;
         
         return room;
     }
@@ -83,7 +84,10 @@ public class RoomBuilder : MonoBehaviour
             ClearChilds(_roomParent);
         //_roomParent = Instantiate(new GameObject("Wall Parent"), Vector3.zero, Quaternion.identity).transform;
         SpawnWalls(room);
-
+        if (room.RoomFlags == 0x10)
+            GameObject.Find("Shop Manager").GetComponent<Shop>().SpawnShop(new Vector3(9,9,0),_roomParent);
+        
+        
         for (int x = 0; x < room.Grid.Width; x++)
             for (int y = 0; y < room.Grid.Height; y++)
             {
