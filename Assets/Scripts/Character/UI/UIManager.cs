@@ -79,10 +79,10 @@ public class UIManager : MonoBehaviour
     private void e_UpdateStat(object sender, EventArgs e)
     {
         _weaponText.text = $"{_playerStats.Weapon.Name}\n {_playerStats.Weapon.ItemQuality}";
-        _damageText.text = $"Damage: {_playerStats.Damage}";
+        _damageText.text = $"Damage: {_playerStats.Damage * Utils.WeaponQualityMultiplier(_playerStats.Weapon.ItemQuality)}";
         
 
-        float attackSpeed = _playerStats.AttackSpeed >= 0f ? 1/_playerStats.AttackSpeed : 0f;
+        float attackSpeed = _playerStats.AttackSpeed >= 0f ? 1/(_playerStats.AttackSpeed + ((1f-Utils.WeaponQualityMultiplier(_playerStats.Weapon.ItemQuality))*.1f)) : 0f;
         
         _attackSpeedText.text = $"AttackSpeed: {(attackSpeed):F2}";
     }

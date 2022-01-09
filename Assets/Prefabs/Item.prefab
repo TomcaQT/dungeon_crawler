@@ -117,7 +117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3384669874798719400
 RectTransform:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.54509807}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -399,9 +399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8575759824841994471, guid: 7e8a3a100ece4f7498ae5439d28d8095, type: 3}
       propertyPath: m_text
-      value: 'ItemQuality
-
-'
+      value: Normal
       objectReference: {fileID: 0}
     - target: {fileID: 8575759824841994471, guid: 7e8a3a100ece4f7498ae5439d28d8095, type: 3}
       propertyPath: m_fontSize
@@ -526,7 +524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8575759824841994471, guid: 7e8a3a100ece4f7498ae5439d28d8095, type: 3}
       propertyPath: m_text
-      value: ItemName
+      value: asdf
       objectReference: {fileID: 0}
     - target: {fileID: 8575759824841994471, guid: 7e8a3a100ece4f7498ae5439d28d8095, type: 3}
       propertyPath: m_fontSize

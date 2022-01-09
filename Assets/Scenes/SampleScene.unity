@@ -2318,7 +2318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _endPoint: {fileID: 0}
-  _roomNumber: 0
+  RoomNumber: 0
 --- !u!82 &1244403990
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3056,6 +3056,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 277472553, guid: a5e9bead8f811b746b042b6d549b2c95, type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: b7852288e4e2d17479767afcc35bd8c4, type: 2}
     - target: {fileID: 3966229529464963355, guid: a5e9bead8f811b746b042b6d549b2c95, type: 3}
       propertyPath: m_RootOrder
       value: 3
