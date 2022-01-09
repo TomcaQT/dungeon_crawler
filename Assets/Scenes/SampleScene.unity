@@ -580,8 +580,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebccdd5cd91745d4091bd5399ea61eab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 0}
+  EnemyPrefab: {fileID: 5775565201933828964, guid: 88792def9d49ed54f99ed4d29a69beae, type: 3}
   ItemPrefab: {fileID: 5398179462477913297, guid: a81b869b4006bbf40a61fbbc5b035442, type: 3}
+  MoneyPrefab: {fileID: 976211349311940101, guid: 939c48e76598c3f4abe42486c47a1375, type: 3}
+  RoomParent: {fileID: 223075012}
 --- !u!1 &184423359
 GameObject:
   m_ObjectHideFlags: 0
@@ -3741,10 +3743,6 @@ PrefabInstance:
     - target: {fileID: 976211349311940101, guid: 939c48e76598c3f4abe42486c47a1375, type: 3}
       propertyPath: m_Name
       value: Money
-      objectReference: {fileID: 0}
-    - target: {fileID: 976211349311940102, guid: 939c48e76598c3f4abe42486c47a1375, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 939c48e76598c3f4abe42486c47a1375, type: 3}

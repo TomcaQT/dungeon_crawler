@@ -18,6 +18,15 @@ MonoBehaviour:
   Damage: 10
   AttackSpeed: 1
   LootTable:
-    DropChances: []
+    DropCount:
+    - value: 0
+      probability: 0.5
+    - value: 1
+      probability: 0.5
+    DropChances:
+    - value: {fileID: 11400000, guid: daf043b43a1821549bf4bfe9488c183c, type: 2}
+      probability: 1
+    MoneyAmount: 10
+    AlwaysDrop: []
   StopDistance: 5
   BulletProjectile: {fileID: 7528107958429836074, guid: 22e3092febeab234d82c2a9c9a77f316, type: 3}

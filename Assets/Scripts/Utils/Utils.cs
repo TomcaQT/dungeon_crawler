@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Helpers;
 using UnityEngine;
 
 public static class Utils
@@ -55,4 +57,42 @@ public static class Utils
 
         return 1f;
     }
+    
+    public static T GetRandom<T>(List<ProbabilityValue<T>> probabilities)
+    {
+        //Get total probabilty (should be 1);
+        float totalProbabilty = probabilities.Select(x => x.probability).Sum();
+        //Generate random number without zero
+        float randomNumber = Random.Range(0.000001f, totalProbabilty);
+        //Iterate through all probabilities and find correct interval
+        foreach (var pv in probabilities)
+        {
+            if (randomNumber <= pv.probability)
+                return pv.value;
+            randomNumber -= pv.probability;
+        }
+
+        return default(T);
+    }
+
+    public static ItemQuality GetRandomQuality()
+    {
+        float num = Random.Range(0f, 1f);
+        if (num >= .96f)
+            return ItemQuality.Legendary;
+        if (num >= .89f)
+            return ItemQuality.Epic;
+        if (num >= .79f)
+            return ItemQuality.Rare;
+        return ItemQuality.Normal;
+    }
+    
+    public static Vector2 GetRandomVector(Vector2 min, Vector2 max)
+    {
+        return new Vector2(Random.Range(min.x, max.x), Random.Range(min.y, max.y));
+    }
+    
+    
+    
+    
 }
