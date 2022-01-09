@@ -21,7 +21,7 @@ public class RoomGenerator : MonoBehaviour
         
     }
 
-    public Room GenerateNewRoom()
+    public Room GenerateNewRoom(int roomNumber)
     {
         Room room = new Room();
         //TEMP DEBUG
@@ -31,7 +31,7 @@ public class RoomGenerator : MonoBehaviour
             Debug.Log($"Enemy Count: {GetRandomCount(_enemyCountProbability)}");
             Debug.Log($"Boost Count: {GetRandomCount(_boostCountProbability)}");
         }8/*/
-
+        room.Number = roomNumber;
         room.Size = GetRandomIntSize(_roomSizeMin, _roomSizeMax);
         room.Shape = RoomShape.Square;
         room.Grid = new Grid<RoomEntity>(room.Size.x, room.Size.y);

@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     private List<Enemy> _enemies;
     
     [SerializeField] private GameObject _endPoint;
+
+    private int _roomNumber = 1;
     
     private void Awake()
     {
@@ -51,7 +53,7 @@ public class GameManager : MonoBehaviour
     
     public void NextRoom()
     {
-        _endPoint = _roomBuilder.BuildRoom(_roomGenerator.GenerateNewRoom(),out _enemies);
+        _endPoint = _roomBuilder.BuildRoom(_roomGenerator.GenerateNewRoom(_roomNumber),out _enemies);
         _enemies.ForEach(x => x.OnEnemyDeath += e_OnEnemyDeath);
         _endPoint.GetComponent<End>().OnRoomEnd += e_OnRoomEnd;
     }

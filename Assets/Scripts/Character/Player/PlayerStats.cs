@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour, IDamagable
@@ -19,16 +16,17 @@ public class PlayerStats : MonoBehaviour, IDamagable
 
     private const float MAX_MONEY = 1000000;
     public Currency Currency;
-    
+
+    public event EventHandler OnStatChange;
     
     private void Awake()
     {
-        _hp = new Resource(100f, "Hp", 1f);
+        _hp = new Resource(100f, "Hp", 0f);
         _energy = new Resource(100f, "Energy", 20f);
 
         _damage = new Stat(10f, "Damage");
         _resistency = new Stat(5f, "Resistency");
-        _attackSpeed = new Stat(.4f, "AttackSpeed");
+        _attackSpeed = new Stat(.5f, "AttackSpeed");
         _bulletSpeed = new Stat(10f, "BulletSpeed");
 
         Currency = new Currency(100, "µ");
@@ -87,6 +85,7 @@ public class PlayerStats : MonoBehaviour, IDamagable
                 Debug.LogError("No known stat to boost");
                 break;
         }
+        OnStatChange?.Invoke(this,new EventArgs());
     }
     
     public bool TryTakeEnergy(float amount) => _energy.TryTake(amount);
@@ -94,8 +93,15 @@ public class PlayerStats : MonoBehaviour, IDamagable
     public WeaponItemData Weapon 
     {
         get => _weapon;
-        set => _weapon = value;
+        set
+        {
+            _weapon = value;
+            OnStatChange?.Invoke(this, new EventArgs());
+        }
     }
+
+    public Resource Hp => _hp;
+    public Resource Energy => _energy;
     
     public float Damage => _damage.Value;
     public float Resistency => _resistency.Value;
@@ -115,6 +121,7 @@ public class PlayerStats : MonoBehaviour, IDamagable
         if (_weapon.ItemQuality == ItemQuality.Legendary)
             return;
         _weapon.ItemQuality++;
+        OnStatChange?.Invoke(this,new EventArgs());
     }
 
     #endregion

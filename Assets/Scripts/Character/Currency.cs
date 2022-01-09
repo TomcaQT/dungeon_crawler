@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class Currency
     [SerializeField] private string _name;
     [SerializeField] private int _value;
 
-    //public event EventHandler OnResourceChange; ????
+    public event EventHandler OnCurrencyChange;
     
     public Currency(int initialValue = 0, string name = "currencyName")
     {
@@ -21,6 +22,7 @@ public class Currency
         if (amount < 0)
             return;
         _value += amount;
+        OnCurrencyChange?.Invoke(this,new EventArgs());
     }
 
     public void Add(Currency other)
@@ -33,6 +35,7 @@ public class Currency
         if (amount < 0)
             amount = 0;
         _value -= amount;
+        OnCurrencyChange?.Invoke(this,new EventArgs());
     }
     public bool TryTake(int amount)
     {

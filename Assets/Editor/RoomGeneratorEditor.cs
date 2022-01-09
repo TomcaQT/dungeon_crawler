@@ -10,7 +10,7 @@ public class RoomGeneratorEditor : Editor
         base.OnInspectorGUI();
         
         if(GUILayout.Button("Generate New Room"))
-            (target as RoomGenerator)?.GenerateNewRoom();
+            (target as RoomGenerator)?.GenerateNewRoom(666);
         
     }
     
