@@ -61,7 +61,7 @@ public class UIManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        _roomText.text = $"Room: {_gameManager._roomNumber}";
+        _roomText.text = $"Room: {_gameManager.RoomNumber}";
     }
 
     private void e_UpdateHp(object sender, ResourceChangeEventArgs e)

@@ -2318,7 +2318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _endPoint: {fileID: 0}
-  _roomNumber: 1
+  _roomNumber: 0
 --- !u!82 &1244403990
 AudioSource:
   m_ObjectHideFlags: 0
