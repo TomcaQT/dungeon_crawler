@@ -16,7 +16,7 @@ public static class Utils
         switch (itemQuality)
         {
             case ItemQuality.Normal:
-                return Color.green;
+                return Color.white;
             case ItemQuality.Rare:
                 return Color.blue;
             case ItemQuality.Epic:
