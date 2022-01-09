@@ -1585,11 +1585,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7623318082582899129, guid: 7e8a3a100ece4f7498ae5439d28d8095, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 529.933
+      value: 931.118
       objectReference: {fileID: 0}
     - target: {fileID: 7623318082582899129, guid: 7e8a3a100ece4f7498ae5439d28d8095, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -149.9378
       objectReference: {fileID: 0}
     - target: {fileID: 7623318082582899129, guid: 7e8a3a100ece4f7498ae5439d28d8095, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1621,11 +1621,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7623318082582899129, guid: 7e8a3a100ece4f7498ae5439d28d8095, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 37.035095
+      value: 0.000020981
       objectReference: {fileID: 0}
     - target: {fileID: 7623318082582899129, guid: 7e8a3a100ece4f7498ae5439d28d8095, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 68
       objectReference: {fileID: 0}
     - target: {fileID: 7623318082582899129, guid: 7e8a3a100ece4f7498ae5439d28d8095, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1642,15 +1642,19 @@ PrefabInstance:
     - target: {fileID: 8575759824841994471, guid: 7e8a3a100ece4f7498ae5439d28d8095, type: 3}
       propertyPath: m_text
       value: "Movement: WSAD or Arrows\nAiming and shooting: Mouse and LMB\nInteract:
-        E\n\n\xB5 is in-game currency "
+        E\nDash: Mouse + Left Shift\n\n\xB5 is in-game currency "
       objectReference: {fileID: 0}
     - target: {fileID: 8575759824841994471, guid: 7e8a3a100ece4f7498ae5439d28d8095, type: 3}
       propertyPath: m_fontSize
-      value: 55.95
+      value: 54.5
       objectReference: {fileID: 0}
     - target: {fileID: 8575759824841994471, guid: 7e8a3a100ece4f7498ae5439d28d8095, type: 3}
       propertyPath: m_fontSizeMax
       value: 55.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575759824841994471, guid: 7e8a3a100ece4f7498ae5439d28d8095, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9221652677895741639, guid: 7e8a3a100ece4f7498ae5439d28d8095, type: 3}
       propertyPath: m_Name
