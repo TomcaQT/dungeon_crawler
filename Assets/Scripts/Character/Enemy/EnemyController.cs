@@ -39,12 +39,12 @@ public class EnemyController : MonoBehaviour
         timeToAttack = Random.Range(0f, _attackSpeed);
     }
 
-    public virtual void LoadData(EnemyData enemyData)
+    public virtual void LoadData(EnemyData enemyData, int roomNumber = 1)
     {
         Debug.Log("Controller loading");
         Awake();
         Start();
-        _damage = enemyData.Damage;
+        _damage = enemyData.Damage* (1  + (roomNumber * 0.05f));
         _attackSpeed = enemyData.AttackSpeed;
         _isLoaded = true;
     }

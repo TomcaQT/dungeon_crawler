@@ -22,6 +22,7 @@ public class PlayerStats : MonoBehaviour, IDamagable
     
     private void Awake()
     {
+        _weapon = Instantiate(_weapon);
         _hp = new Resource(100f, "Hp", 0f);
         _energy = new Resource(100f, "Energy", 20f);
 
@@ -96,7 +97,7 @@ public class PlayerStats : MonoBehaviour, IDamagable
         get => _weapon;
         set
         {
-            _weapon = value;
+            _weapon = Instantiate(value);
             OnStatChange?.Invoke(this, new EventArgs());
         }
     }

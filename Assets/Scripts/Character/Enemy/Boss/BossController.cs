@@ -23,14 +23,14 @@ public class BossController : EnemyController
     [SerializeField] private GameObject _hpPanel;
     [SerializeField] private Slider _hpBar;
 
-    public override void LoadData(EnemyData enemyData)
+    public override void LoadData(EnemyData enemyData, int roomNumber)
     {
         base.LoadData(enemyData);
         var bossData = (BossData) enemyData;
         _phasePercentages = bossData.PhasePercentages;
         _phaseDamageMultipliers = bossData.PhaseDamageMultipliers;
         _phaseAttackSpeedBoost = bossData.PhaseAttackSpeedBoost;
-
+        
         _bullet = bossData.Bullet;
         _movementType = bossData.Movement;
         _waypoints = new List<Vector3>();
@@ -51,7 +51,7 @@ public class BossController : EnemyController
     {
         var bulletObj = Instantiate(_bullet, transform.position, Quaternion.identity);
         var bullet = bulletObj.GetComponent<Bullet>();
-        bullet.Initialize(gameObject,_damage);
+        bullet.Initialize(gameObject,_damage );
         
         
         Vector2 lookingDir =  _target.position - transform.position;

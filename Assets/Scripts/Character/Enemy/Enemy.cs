@@ -24,13 +24,14 @@ public class Enemy : MonoBehaviour, IDamagable
         _prefabManager = GameObject.Find("Prefab Manager").GetComponent<PrefabManager>();
     }
 
-    public void LoadData(EnemyData data)
+    public void LoadData(EnemyData data, int roomNumber)
     {
         Awake();
         _enemyData = data;
-        _hp = new Resource(data.Hp, "Health");
+        _hp = new Resource(data.Hp * (1  + (roomNumber * 0.05f)) , "Health");
         _hp.OnResourceChange += _enemyController.OnHpChanged;
         _lootTable = data.LootTable;
+        _lootTable.MoneyAmount = Mathf.RoundToInt(_lootTable.MoneyAmount * (1 + (roomNumber * 0.05f)));
         if(_spriteRenderer != null) _spriteRenderer.sprite = data.Sprite;
         _enemyController.LoadData(data);
     }

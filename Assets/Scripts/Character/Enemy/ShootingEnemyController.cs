@@ -9,7 +9,7 @@ public class ShootingEnemyController : EnemyController
     private GameObject _bullet;
 
     
-    public override void LoadData(EnemyData enemyData)
+    public override void LoadData(EnemyData enemyData, int roomNumber)
     {
         base.LoadData(enemyData);
         _isLoaded = false;

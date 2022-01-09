@@ -106,7 +106,7 @@ public class RoomBuilder : MonoBehaviour
                     }
 
                     var enemy = Instantiate(enemyPrefab, new Vector3(x, y, 0), Quaternion.identity, _roomParent);
-                    enemy.GetComponent<Enemy>().LoadData(enemyData);
+                    enemy.GetComponent<Enemy>().LoadData(enemyData,room.Number);
                     
                     enemies.Add(enemy.GetComponent<Enemy>());
                 }
@@ -125,7 +125,7 @@ public class RoomBuilder : MonoBehaviour
                     var randomBoss = GetRandomFromList(_boss);
                     var boss = Instantiate(randomBoss.First, new Vector3(x, y, 0), Quaternion.identity, _roomParent);
                     var bossEnemy = boss.GetComponent<Enemy>();
-                    bossEnemy.LoadData(randomBoss.Second);
+                    bossEnemy.LoadData(randomBoss.Second,room.Number);
                     enemies.Add(bossEnemy);
                 }
 

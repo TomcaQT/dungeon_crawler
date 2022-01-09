@@ -3059,7 +3059,7 @@ PrefabInstance:
     - target: {fileID: 277472553, guid: a5e9bead8f811b746b042b6d549b2c95, type: 3}
       propertyPath: _weapon
       value: 
-      objectReference: {fileID: 11400000, guid: b7852288e4e2d17479767afcc35bd8c4, type: 2}
+      objectReference: {fileID: 11400000, guid: 824804df6c98ae740855bd73f57a2fb9, type: 2}
     - target: {fileID: 3966229529464963355, guid: a5e9bead8f811b746b042b6d549b2c95, type: 3}
       propertyPath: m_RootOrder
       value: 3
