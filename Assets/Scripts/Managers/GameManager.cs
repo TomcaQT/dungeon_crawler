@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private GameObject _endPoint;
 
-    private int _roomNumber = 1;
+    public int _roomNumber = -1;
     
     private void Awake()
     {
@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
     public void NextRoom()
     {
         _endPoint = _roomBuilder.BuildRoom(_roomGenerator.GenerateNewRoom(_roomNumber),out _enemies);
+        _roomNumber++;
         _enemies.ForEach(x => x.OnEnemyDeath += e_OnEnemyDeath);
         _endPoint.GetComponent<End>().OnRoomEnd += e_OnRoomEnd;
     }

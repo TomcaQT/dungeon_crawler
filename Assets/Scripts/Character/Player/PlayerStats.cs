@@ -18,6 +18,7 @@ public class PlayerStats : MonoBehaviour, IDamagable
     public Currency Currency;
 
     public event EventHandler OnStatChange;
+    public event EventHandler OnPlayerDeath;
     
     private void Awake()
     {
@@ -51,7 +52,7 @@ public class PlayerStats : MonoBehaviour, IDamagable
     public void TakeDamage(float amount)
     {
         if (_hp.Take(amount))
-            Debug.Log("Player Die");
+            OnPlayerDeath?.Invoke(this,new EventArgs());
     }
     
     #region Resources and Stats accessors

@@ -21,9 +21,12 @@ public class Shop : MonoBehaviour
     private int[] _prices = new int[] {100, 100, 100};
     private ItemData _itemToSell;
 
+    private AudioSource _audioSource;
+
     private void Awake()
     {
         _spots = new GameObject[3];
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -38,6 +41,7 @@ public class Shop : MonoBehaviour
         OnBuy(index);
         _prices[index] *= PRICE_MULTIPLIER;
         _spots[index].SetActive(false);
+        _audioSource.Play();
     }
 
     private void OnBuy(int index)

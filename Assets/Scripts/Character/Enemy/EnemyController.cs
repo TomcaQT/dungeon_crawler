@@ -18,7 +18,9 @@ public class EnemyController : MonoBehaviour
     protected float _damage;
     protected float _attackSpeed;
     protected float timeToAttack;
-    
+
+
+    private float timeToCollisionAttack;
     
     private void Awake()
     {
@@ -44,6 +46,7 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
         EnemyBehaviour();
+        timeToCollisionAttack += Time.deltaTime;
     }
 
     protected virtual void EnemyBehaviour()
@@ -78,6 +81,12 @@ public class EnemyController : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
- 
-    
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && timeToCollisionAttack > 0.5f)
+        {
+            other.GetComponent<IDamagable>().TakeDamage(_damage);
+            timeToCollisionAttack = 0f;
+        }
+    }
 }

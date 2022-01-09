@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -22,9 +23,11 @@ public class UIManager : MonoBehaviour
     //[SerializeField] private Button _menuButton;
 
     [SerializeField] private GameObject _menu;
+    [SerializeField] private GameObject _playAgainMenu;
     
     
     private PlayerStats _playerStats;
+    private GameManager _gameManager;
 
     private bool _isPaused = false;
     
@@ -37,10 +40,12 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         _playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         _playerStats.Hp.OnResourceChange += e_UpdateHp;
         _playerStats.Energy.OnResourceChange += e_UpdateEnergy;
         _playerStats.OnStatChange += e_UpdateStat;
         _playerStats.Currency.OnCurrencyChange += e_UpdateMoney;
+        _playerStats.OnPlayerDeath += e_PlayerDeath;
 
         _hpText.text = $"{_playerStats.Hp.Value}/{_playerStats.Hp.MaxValue}";
         _energyText.text = $"{_playerStats.Energy.Value}";
@@ -48,6 +53,7 @@ public class UIManager : MonoBehaviour
         e_UpdateMoney(this,new EventArgs());
         
         _menu.SetActive(false);
+        _playAgainMenu.SetActive(false);
     }
 
     private void Update()
@@ -58,7 +64,7 @@ public class UIManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        
+        _roomText.text = $"Room: {_gameManager._roomNumber}";
     }
 
     private void e_UpdateHp(object sender, ResourceChangeEventArgs e)
@@ -89,6 +95,12 @@ public class UIManager : MonoBehaviour
         _moneyText.text = $"µ: {_playerStats.Currency.Value}";
     }
 
+    private void e_PlayerDeath(object sender, EventArgs e)
+    {
+        _playAgainMenu.SetActive(true);
+        Time.timeScale = 0;
+    }
+
     public void PauseMenu()
     {
        
@@ -106,9 +118,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void PlayAgain()
+    {
+        
+    }
+    
     public void MainMenu()
     {
-        Debug.Log($"Returning to main menu");
+        SceneManager.LoadScene(0);
     }
     
     private void GetInput()
