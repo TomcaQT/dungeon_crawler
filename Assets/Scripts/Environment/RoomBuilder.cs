@@ -150,13 +150,21 @@ public class RoomBuilder : MonoBehaviour
     private void SpawnWalls(Room room)
     {
         var leftWall = Instantiate(_wall, new Vector3(-1, room.Size.y/2f, 0), Quaternion.identity, _roomParent);
-        leftWall.transform.localScale = new Vector3(leftWall.transform.localScale.x, room.Size.y+3, leftWall.transform.localScale.z);
+        leftWall.GetComponent<SpriteRenderer>().size = new Vector2(leftWall.transform.localScale.x, room.Size.y + 3);
+        leftWall.GetComponent<BoxCollider2D>().size = new Vector2(leftWall.transform.localScale.x, room.Size.y + 3);
+        //leftWall.transform.localScale = new Vector3(leftWall.transform.localScale.x, room.Size.y+3, leftWall.transform.localScale.z);
         var rightWall = Instantiate(_wall, new Vector3(room.Size.x + 1 , room.Size.y/2f, 0), Quaternion.identity, _roomParent);
-        rightWall.transform.localScale = new Vector3(rightWall.transform.localScale.x, room.Size.y+3, rightWall.transform.localScale.z);
+        rightWall.GetComponent<SpriteRenderer>().size = new Vector2(rightWall.transform.localScale.x, room.Size.y+3);
+        rightWall.GetComponent<BoxCollider2D>().size = new Vector2(rightWall.transform.localScale.x, room.Size.y+3);
+        //rightWall.transform.localScale = new Vector3(rightWall.transform.localScale.x, room.Size.y+3, rightWall.transform.localScale.z);
         var upWall = Instantiate(_wall, new Vector3(room.Size.x/2f, room.Size.y + 1, 0), Quaternion.identity, _roomParent);
-        upWall.transform.localScale = new Vector3(room.Size.x+3,upWall.transform.localScale.y, upWall.transform.localScale.z);
+        upWall.GetComponent<SpriteRenderer>().size = new Vector2(room.Size.x+3,upWall.transform.localScale.y );
+        upWall.GetComponent<BoxCollider2D>().size = new Vector2(room.Size.x+3,upWall.transform.localScale.y);
+        //upWall.transform.localScale = new Vector3(room.Size.x+3,upWall.transform.localScale.y, upWall.transform.localScale.z);
         var downWall = Instantiate(_wall, new Vector3(room.Size.x/2f, -1, 0), Quaternion.identity, _roomParent);
-        downWall.transform.localScale = new Vector3(room.Size.x+3,downWall.transform.localScale.y, downWall.transform.localScale.z);
+        downWall.GetComponent<SpriteRenderer>().size = new Vector2(room.Size.x+3,downWall.transform.localScale.y);
+        downWall.GetComponent<BoxCollider2D>().size = new Vector2(room.Size.x+3,downWall.transform.localScale.y);
+        //downWall.transform.localScale = new Vector3(room.Size.x+3,downWall.transform.localScale.y, downWall.transform.localScale.z);
     }
 
     private T GetRandomFromList<T>(List<T> data) => data != null ? data[Random.Range(0, data.Count)] : default(T);
