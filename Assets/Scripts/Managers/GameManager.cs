@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         NextRoom();
+        Time.timeScale = 1f;
     }
 
     private void Update()

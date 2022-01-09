@@ -17,3 +17,4 @@ MonoBehaviour:
   ItemQuality: 0
   ItemSprite: {fileID: 0}
   Bullet: {fileID: 7528107958429836074, guid: 22e3092febeab234d82c2a9c9a77f316, type: 3}
+  EnergyCost: 1

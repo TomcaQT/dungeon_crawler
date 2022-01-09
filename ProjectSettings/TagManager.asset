@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Shop
   - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX

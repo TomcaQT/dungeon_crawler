@@ -8,7 +8,7 @@ public class WeaponItemData : ItemData
 {
 
     public GameObject Bullet;
-    
+    public float EnergyCost;
     
     
     public override void OnPickup(PlayerStats player)

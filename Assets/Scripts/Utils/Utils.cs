@@ -38,4 +38,21 @@ public static class Utils
             curr = 0;
         return data[curr];
     }
+
+    public static float WeaponQualityMultiplier(ItemQuality quality)
+    {
+        switch (quality)
+        {
+            case ItemQuality.Normal:
+                return 1f;
+            case ItemQuality.Rare:
+                return 1.1f;
+            case ItemQuality.Epic:
+                return 1.4f;
+            case ItemQuality.Legendary:
+                return 1.8f;
+        }
+
+        return 1f;
+    }
 }

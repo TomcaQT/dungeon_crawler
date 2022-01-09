@@ -33,7 +33,9 @@ public class PlayerCombat : MonoBehaviour
     private void GetInput()
     {
         timeToAttack += Time.deltaTime;
-        if (Input.GetButton("Fire1") && timeToAttack >= _playerStats.AttackSpeed)
+        if (Input.GetButton("Fire1") 
+            && timeToAttack >= _playerStats.AttackSpeed + ((1f-Utils.WeaponQualityMultiplier(_playerStats.Weapon.ItemQuality))*.1f) 
+            && _playerStats.Energy.TryTake(_playerStats.Weapon.EnergyCost))
         {
             Shoot();
             timeToAttack = 0f;
@@ -46,7 +48,7 @@ public class PlayerCombat : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 lookingDir =  mousePosition - transform.position;
         var bullet = Instantiate(_playerStats.Weapon.Bullet, transform.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().Initialize(gameObject,_playerStats.Damage,_playerStats.BulletSpeed);
+        bullet.GetComponent<Bullet>().Initialize(_playerStats.Weapon.Bullet,_playerStats.Damage * Utils.WeaponQualityMultiplier(_playerStats.Weapon.ItemQuality) ,_playerStats.BulletSpeed);
         bullet.GetComponent<Bullet>().Shoot(lookingDir);
     }
 }

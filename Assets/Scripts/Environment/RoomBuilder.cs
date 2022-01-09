@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Helpers;
 using Random = UnityEngine.Random;
 using UnityEngine;
@@ -80,8 +81,11 @@ public class RoomBuilder : MonoBehaviour
     {
         enemies = new List<Enemy>();
         GameObject end = null;
-        if(_roomParent != null)
+        if (_roomParent != null)
+        {
             ClearChilds(_roomParent);
+            ClearBullets();
+        }
         //_roomParent = Instantiate(new GameObject("Wall Parent"), Vector3.zero, Quaternion.identity).transform;
         SpawnWalls(room);
         if (room.RoomFlags == 0x10)
@@ -150,6 +154,12 @@ public class RoomBuilder : MonoBehaviour
             if(child.gameObject.name != "Background")
                 Destroy(child.gameObject);
         }
+    }
+
+    private void ClearBullets()
+    {
+        var bullets = GameObject.FindGameObjectsWithTag("Bullet");
+        bullets.ToList().ForEach(x => Destroy(x));
     }
 
 }
