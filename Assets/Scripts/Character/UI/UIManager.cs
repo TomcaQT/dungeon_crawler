@@ -19,9 +19,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Slider _hpBar;
     [SerializeField] private Slider _energyBar;
 
-    //[SerializeField] private Button _resumeButton;
-    //[SerializeField] private Button _menuButton;
-
     [SerializeField] private GameObject _menu;
     [SerializeField] private GameObject _playAgainMenu;
     
@@ -135,4 +132,5 @@ public class UIManager : MonoBehaviour
             PauseMenu();
         }
     }
+    
 }

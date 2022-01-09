@@ -9,9 +9,9 @@ public abstract class EnemyData : ScriptableObject
 {
 
     public string Name;
+    public Sprite Sprite;
 
     public string Description; //???
-
     public float Hp;
     public float Damage;
     public float AttackSpeed;

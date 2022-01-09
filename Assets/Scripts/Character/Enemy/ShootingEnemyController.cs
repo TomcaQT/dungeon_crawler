@@ -12,10 +12,12 @@ public class ShootingEnemyController : EnemyController
     public override void LoadData(EnemyData enemyData)
     {
         base.LoadData(enemyData);
+        _isLoaded = false;
         var shootingEnemyData = (ShootingEnemyData) enemyData;
         _bullet = shootingEnemyData.BulletProjectile;
 
         _agent.stoppingDistance = shootingEnemyData.StopDistance;
+        _isLoaded = true;
     }
     
     protected override void Attack()

@@ -12,12 +12,14 @@ public class PlayerCombat : MonoBehaviour
 
     private const float DASH_COST = 50f;
     private Rigidbody2D _rigidbody;
+    private AudioSource _audioSource;
     
 
     private void Awake()
     {
         _playerStats = GetComponent<PlayerStats>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        _audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -65,6 +67,7 @@ public class PlayerCombat : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 lookingDir =  mousePosition - transform.position;
         _rigidbody.AddForce(lookingDir.normalized * 10000f, ForceMode2D.Force);
+        _audioSource.Play();
     }
 
 

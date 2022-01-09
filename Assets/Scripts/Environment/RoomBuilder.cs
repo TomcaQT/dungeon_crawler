@@ -18,7 +18,7 @@ public class RoomBuilder : MonoBehaviour
 
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _endPortal;
-    [SerializeField] private List<GameObject> _enemies;
+    [SerializeField] private List<EnemyData> _enemies;
     [SerializeField] private List<ItemData> _items;
     [SerializeField] private List<Pair<GameObject, BossData>> _boss;
     
@@ -97,7 +97,19 @@ public class RoomBuilder : MonoBehaviour
             {
                 GameObject toSpawn = null;
                 if (room.Grid.Get(x, y) == RoomEntity.Enemy)
-                    toSpawn = GetRandomFromList(_enemies);
+                {
+                    var enemyData = GetRandomFromList(_enemies);
+                    var enemyPrefab = _prefabManager.EnemyPrefab;
+                    if (enemyData.GetType() == typeof(ShootingEnemyData))
+                    {
+                        enemyPrefab = _prefabManager.ShootingEnemyPrefab;
+                    }
+
+                    var enemy = Instantiate(enemyPrefab, new Vector3(x, y, 0), Quaternion.identity, _roomParent);
+                    enemy.GetComponent<Enemy>().LoadData(enemyData);
+                    
+                    enemies.Add(enemy.GetComponent<Enemy>());
+                }
                 else if (room.Grid.Get(x, y) == RoomEntity.Boost)
                 {
                     var data = GetRandomFromList(_items);
@@ -120,8 +132,6 @@ public class RoomBuilder : MonoBehaviour
                 GameObject spawned = null;
                 if (toSpawn != null)
                     spawned = Instantiate(toSpawn, new Vector3(x, y, 0), Quaternion.identity,_roomParent);
-                if (room.Grid.Get(x, y) == RoomEntity.Enemy && spawned != null)
-                    enemies.Add(spawned.GetComponent<Enemy>());
                 if (room.Grid.Get(x, y) == RoomEntity.End && spawned != null)
                     end = spawned;
 
@@ -130,6 +140,10 @@ public class RoomBuilder : MonoBehaviour
         
         //Temp -> camera will follow player
         _camera.transform.position = new Vector3(room.Size.x / 2, room.Size.y / 2, -10);
+        if(_enemies.Count > 0)
+            end.SetActive(false);
+        if(room.RoomFlags == 0x10)
+            end.SetActive(true);
         return end;
     }
 

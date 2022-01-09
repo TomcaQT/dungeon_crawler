@@ -21,6 +21,8 @@ public class EnemyController : MonoBehaviour
 
 
     private float timeToCollisionAttack;
+
+    protected bool _isLoaded = false;
     
     private void Awake()
     {
@@ -32,19 +34,26 @@ public class EnemyController : MonoBehaviour
     {
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
+        
 
         timeToAttack = Random.Range(0f, _attackSpeed);
     }
 
     public virtual void LoadData(EnemyData enemyData)
     {
+        Debug.Log("Controller loading");
+        Awake();
+        Start();
         _damage = enemyData.Damage;
         _attackSpeed = enemyData.AttackSpeed;
+        _isLoaded = true;
     }
 
     
     private void Update()
     {
+        if (!_isLoaded)
+            return;
         EnemyBehaviour();
         timeToCollisionAttack += Time.deltaTime;
     }

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossController : EnemyController
 {
@@ -17,7 +19,10 @@ public class BossController : EnemyController
     
     
     [SerializeField] private List<SpriteRenderer> _spriteRenderers;
-    
+
+    [SerializeField] private GameObject _hpPanel;
+    [SerializeField] private Slider _hpBar;
+
     public override void LoadData(EnemyData enemyData)
     {
         base.LoadData(enemyData);
@@ -31,6 +36,15 @@ public class BossController : EnemyController
         _waypoints = new List<Vector3>();
         bossData.WaypointsOffset.ForEach(w => _waypoints.Add(transform.position + new Vector3(w.x,w.y,0)));
         //_agent.stoppingDistance = shootingEnemyData.StopDistance;
+        InitUI();
+    }
+
+    private void InitUI()
+    {
+        _hpPanel = GameObject.Find("BossPanel");
+        
+        _hpBar = _hpPanel.transform.GetChild(0).GetChild(0).GetComponent<Slider>();
+        _hpBar.gameObject.SetActive(true);
     }
     
     protected override void Attack()
@@ -72,8 +86,13 @@ public class BossController : EnemyController
     
     public override void OnHpChanged(object sender, ResourceChangeEventArgs e)
     {
+        if(e.Value <= 0f)
+            _hpBar.gameObject.SetActive(false);
         base.OnHpChanged(sender,e);
 
+        _hpBar.value = e.Percentage01;
+        
+        
         if (_phase >= _phasePercentages.Count)
             return;
         

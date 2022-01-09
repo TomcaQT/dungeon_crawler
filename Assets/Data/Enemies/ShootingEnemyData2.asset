@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: ShootingEnemyData2
   m_EditorClassIdentifier: 
   Name: Product
+  Sprite: {fileID: 21300000, guid: 4e4488de5abca3b43989377a5b113af7, type: 3}
   Description: Product
   Hp: 30
   Damage: 5
   AttackSpeed: 0.3
   LootTable:
+    DropCount: []
     DropChances: []
+    MoneyAmount: 3
+    AlwaysDrop: []
   StopDistance: 5
   BulletProjectile: {fileID: 4978121072786946604, guid: 7e919429c8a30154fbd83995da46d8d5, type: 3}

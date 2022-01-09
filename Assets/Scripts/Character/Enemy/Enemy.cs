@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour, IDamagable
     protected LootTable _lootTable;
     
     protected EnemyController _enemyController;
+    protected SpriteRenderer _spriteRenderer;
     protected PrefabManager _prefabManager;
     public event EventHandler OnEnemyDeath;
 
@@ -19,25 +20,19 @@ public class Enemy : MonoBehaviour, IDamagable
     private void Awake()
     {
         _enemyController = GetComponent<EnemyController>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _prefabManager = GameObject.Find("Prefab Manager").GetComponent<PrefabManager>();
-    }
-
-    private void Start()
-    {
-        LoadData(null);
     }
 
     public void LoadData(EnemyData data)
     {
-        //TODO Loading data
-        _hp = new Resource(_enemyData.Hp, "health");
+        Awake();
+        _enemyData = data;
+        _hp = new Resource(data.Hp, "Health");
         _hp.OnResourceChange += _enemyController.OnHpChanged;
-        _lootTable = _enemyData.LootTable;
-        
-        if(data == null)
-            _enemyController.LoadData(_enemyData);
-        else
-            _enemyController.LoadData(data);
+        _lootTable = data.LootTable;
+        if(_spriteRenderer != null) _spriteRenderer.sprite = data.Sprite;
+        _enemyController.LoadData(data);
     }
     
     public void TakeDamage(float damage)

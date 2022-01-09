@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MovingEnemyData
   m_EditorClassIdentifier: 
   Name: Integral
+  Sprite: {fileID: 21300000, guid: 50d9043ed3775284ea5d9ad575fa2ea9, type: 3}
   Description: Int
   Hp: 10
   Damage: 5
