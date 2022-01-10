@@ -12,3 +12,7 @@ Game is deployed here : https://tomiukqt.github.io/dungeon_crawler/
    
 # Diagram
 ![Game Architecture](game_architecture.png)
+
+# Known bugs (to be fixed)
+* Interaction doesn't work always
+* Reflecting bullets sometimes ignoring walls
