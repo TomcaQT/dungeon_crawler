@@ -16,18 +16,43 @@ MonoBehaviour:
   Sprite: {fileID: 21300000, guid: 6bdaa8d8e2575a243b41d5e6b714a79f, type: 3}
   Description: Sum
   Hp: 25
+  Speed: 3.5
   Damage: 10
   AttackSpeed: 1
   LootTable:
     DropCount:
     - value: 0
-      probability: 0.5
+      probability: 0.85
     - value: 1
-      probability: 0.5
+      probability: 0.15
     DropChances:
+    - value: {fileID: 11400000, guid: a2b0263af9dabe64780a7e2eccb382f8, type: 2}
+      probability: 0.05
+    - value: {fileID: 11400000, guid: ddad499af3420964d95269d6c37a3d3f, type: 2}
+      probability: 0.05
+    - value: {fileID: 11400000, guid: f1ef8155229a7fd449146080f0c5503e, type: 2}
+      probability: 0.1
+    - value: {fileID: 11400000, guid: 189f338ea28be0840b2214f786003f80, type: 2}
+      probability: 0.15
+    - value: {fileID: 11400000, guid: 48613fba6a0b7a047bc3fd8d9bc102e6, type: 2}
+      probability: 0.1
+    - value: {fileID: 11400000, guid: f3c579733573d4842a5dc82f23fd401e, type: 2}
+      probability: 0.05
+    - value: {fileID: 11400000, guid: 8157e3cfc13afe94eabd64856b3cb47a, type: 2}
+      probability: 0.05
+    - value: {fileID: 11400000, guid: 8ae8fa8caba4bdd4f9587f35d2ed8b29, type: 2}
+      probability: 0.05
+    - value: {fileID: 11400000, guid: d6a62ee6e77af2c45b3b2c9151190ae1, type: 2}
+      probability: 0.05
+    - value: {fileID: 11400000, guid: f89150d0518a6b641831713e438011f3, type: 2}
+      probability: 0.05
     - value: {fileID: 11400000, guid: daf043b43a1821549bf4bfe9488c183c, type: 2}
-      probability: 1
-    MoneyAmount: 10
+      probability: 0.15
+    - value: {fileID: 11400000, guid: 33af3e0d9ce6cbf43909ebbf2c2a6c7c, type: 2}
+      probability: 0.05
+    MoneyAmount: 15
     AlwaysDrop: []
   StopDistance: 5
   BulletProjectile: {fileID: 7528107958429836074, guid: 22e3092febeab234d82c2a9c9a77f316, type: 3}
+  ProjectileSpeed: 10
+  ProjectileLifetime: 5

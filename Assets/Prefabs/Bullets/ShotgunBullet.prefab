@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6706761328411164641, guid: 22e3092febeab234d82c2a9c9a77f316, type: 3}
       propertyPath: _extraAngle
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6706761328411164641, guid: 22e3092febeab234d82c2a9c9a77f316, type: 3}
       propertyPath: _extraSpawn

@@ -13,8 +13,9 @@ public class ItemObject : MonoBehaviour, ICollectible
     [SerializeField] private GameObject _itemDescription;
     [SerializeField] private TextMeshProUGUI _itemNameText;
     [SerializeField] private TextMeshProUGUI _itemQualityText;
-   
 
+    [SerializeField] private ParticleSystem _qualityParticles;
+    
     public void Init(ItemData item)
     {
         _item = item;
@@ -23,8 +24,11 @@ public class ItemObject : MonoBehaviour, ICollectible
 
         _itemNameText.text = item.Name;
         _itemQualityText.text = item.ItemQuality.ToString();
-        _itemDescription.GetComponent<Image>().color = Utils.ItemQualityToColor(item.ItemQuality);
+        _itemDescription.GetComponent<Image>().color = Utils.ItemQualityToColor(item.ItemQuality); 
         _itemDescription.SetActive(false);
+
+        var main = _qualityParticles.main;
+        main.startColor = Utils.ItemQualityToColor(item.ItemQuality); 
     }
 
     public bool AutoCollect

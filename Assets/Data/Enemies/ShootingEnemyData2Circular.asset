@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4f52046027143b7b94c5333e407c6f1, type: 3}
-  m_Name: ShootingEnemyData2
+  m_Name: ShootingEnemyData2Circular
   m_EditorClassIdentifier: 
-  Name: Product
-  Sprite: {fileID: 21300000, guid: 4e4488de5abca3b43989377a5b113af7, type: 3}
-  Description: Product
-  Hp: 30
-  Speed: 4
-  Damage: 5
-  AttackSpeed: 0.2
+  Name: Pi
+  Sprite: {fileID: 21300000, guid: 310808834a16c3b44b14034785d5128b, type: 3}
+  Description: Pi
+  Hp: 45
+  Speed: 0
+  Damage: 10
+  AttackSpeed: 1
   LootTable:
     DropCount:
     - value: 0
@@ -50,9 +50,10 @@ MonoBehaviour:
       probability: 0.15
     - value: {fileID: 11400000, guid: 33af3e0d9ce6cbf43909ebbf2c2a6c7c, type: 2}
       probability: 0.05
-    MoneyAmount: 15
-    AlwaysDrop: []
-  StopDistance: 5
-  BulletProjectile: {fileID: 4978121072786946604, guid: 7e919429c8a30154fbd83995da46d8d5, type: 3}
-  ProjectileSpeed: 14
-  ProjectileLifetime: 5
+    MoneyAmount: 10
+    AlwaysDrop:
+    - {fileID: 11400000, guid: 824804df6c98ae740855bd73f57a2fb9, type: 2}
+  StopDistance: 100
+  BulletProjectile: {fileID: 4653982600653790818, guid: 8a7b9bd3d8f0d644798ee4e01a7165ec, type: 3}
+  ProjectileSpeed: 3
+  ProjectileLifetime: 10

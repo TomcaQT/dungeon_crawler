@@ -4,10 +4,9 @@ using UnityEngine;
 public class ShootingEnemyData : EnemyData
 {
 
-    //Just setting default values to inherited properties
-
-
+        
     [Header("Shooting")] public GameObject BulletProjectile;
+    public float ProjectileSpeed = 10f;
+    public float ProjectileLifetime = 5f;
 
-   
 }

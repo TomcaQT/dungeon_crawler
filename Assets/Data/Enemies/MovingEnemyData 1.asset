@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4f52046027143b7b94c5333e407c6f1, type: 3}
-  m_Name: ShootingEnemyData2
+  m_Script: {fileID: 11500000, guid: bd2ed4e166c845f4921d76faf8ecc380, type: 3}
+  m_Name: MovingEnemyData 1
   m_EditorClassIdentifier: 
-  Name: Product
-  Sprite: {fileID: 21300000, guid: 4e4488de5abca3b43989377a5b113af7, type: 3}
-  Description: Product
-  Hp: 30
-  Speed: 4
+  Name: Ksi
+  Sprite: {fileID: 21300000, guid: 248b6680917a08045b60a3aa3979d8f9, type: 3}
+  Description: Int
+  Hp: 20
+  Speed: 7
   Damage: 5
-  AttackSpeed: 0.2
+  AttackSpeed: 0.5
   LootTable:
     DropCount:
     - value: 0
@@ -52,7 +52,6 @@ MonoBehaviour:
       probability: 0.05
     MoneyAmount: 15
     AlwaysDrop: []
-  StopDistance: 5
-  BulletProjectile: {fileID: 4978121072786946604, guid: 7e919429c8a30154fbd83995da46d8d5, type: 3}
-  ProjectileSpeed: 14
-  ProjectileLifetime: 5
+  StopDistance: 0
+  FollowPlayer: 1
+  Direction: {x: 0, y: 0, z: 0}

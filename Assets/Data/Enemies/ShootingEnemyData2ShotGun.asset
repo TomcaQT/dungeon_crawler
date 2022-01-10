@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4f52046027143b7b94c5333e407c6f1, type: 3}
-  m_Name: ShootingEnemyData2
+  m_Name: ShootingEnemyData2ShotGun
   m_EditorClassIdentifier: 
-  Name: Product
-  Sprite: {fileID: 21300000, guid: 4e4488de5abca3b43989377a5b113af7, type: 3}
-  Description: Product
+  Name: Psi
+  Sprite: {fileID: 21300000, guid: d63aa8bf567975e47aa985110668e9c3, type: 3}
+  Description: Psi
   Hp: 30
-  Speed: 4
+  Speed: 3
   Damage: 5
-  AttackSpeed: 0.2
+  AttackSpeed: 2
   LootTable:
     DropCount:
     - value: 0
@@ -50,9 +50,9 @@ MonoBehaviour:
       probability: 0.15
     - value: {fileID: 11400000, guid: 33af3e0d9ce6cbf43909ebbf2c2a6c7c, type: 2}
       probability: 0.05
-    MoneyAmount: 15
+    MoneyAmount: 20
     AlwaysDrop: []
   StopDistance: 5
-  BulletProjectile: {fileID: 4978121072786946604, guid: 7e919429c8a30154fbd83995da46d8d5, type: 3}
-  ProjectileSpeed: 14
+  BulletProjectile: {fileID: 4653982600653790818, guid: 8b13d89725b082a4c83b33b86c355319, type: 3}
+  ProjectileSpeed: 7
   ProjectileLifetime: 5

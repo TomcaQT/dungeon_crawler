@@ -59,8 +59,11 @@ public class Enemy : MonoBehaviour, IDamagable
         //Drop always drops
         if (_lootTable.AlwaysDrop.Count > 0)
         {
-            foreach (var item in _lootTable.AlwaysDrop)
+            foreach (var it in _lootTable.AlwaysDrop)
             {
+                var item = Instantiate(it);
+                var randomQuality = Utils.GetRandomQuality();
+                item.ItemQuality = randomQuality;
                 var itemPrefab = _prefabManager.ItemPrefab;
                 itemPrefab.GetComponent<ItemObject>().Init(item);
                 DropItem(itemPrefab);

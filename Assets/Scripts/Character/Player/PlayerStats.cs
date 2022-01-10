@@ -65,6 +65,9 @@ public class PlayerStats : MonoBehaviour, IDamagable
             case "Hp":
                 _hp.IncreaseMax(amount);
                 break;
+            case "Heal":
+                HealPercent(amount);
+                break;
             case "Energy":
                 _energy.IncreaseMax(amount);
                 break;

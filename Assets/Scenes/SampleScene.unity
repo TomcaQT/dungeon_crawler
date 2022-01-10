@@ -1030,15 +1030,28 @@ MonoBehaviour:
   _player: {fileID: 277472546}
   _endPortal: {fileID: 209750707741171461, guid: 2212bfecea12b1b4694793d308228851, type: 3}
   _enemies:
+  - {fileID: 11400000, guid: 027724435a63cf248b6387349fb2960d, type: 2}
   - {fileID: 11400000, guid: 4463f7aef9ee7f14fbc8cdd3ff6c0cd9, type: 2}
   - {fileID: 11400000, guid: d3169f80a8acd534baf75f110983e332, type: 2}
   - {fileID: 11400000, guid: e5757c30c35a6604681f5ee469f9410c, type: 2}
+  - {fileID: 11400000, guid: 84bfd40d0cd49fc45abdef0d64d0e551, type: 2}
+  - {fileID: 11400000, guid: 80de5c1377ca39d478340363c2ffea4c, type: 2}
+  - {fileID: 11400000, guid: 7dcaa61127b8fd44d9b9dd65d5a6f47b, type: 2}
   _items:
   - {fileID: 11400000, guid: daf043b43a1821549bf4bfe9488c183c, type: 2}
   - {fileID: 11400000, guid: 33af3e0d9ce6cbf43909ebbf2c2a6c7c, type: 2}
+  - {fileID: 11400000, guid: a2b0263af9dabe64780a7e2eccb382f8, type: 2}
+  - {fileID: 11400000, guid: ddad499af3420964d95269d6c37a3d3f, type: 2}
+  - {fileID: 11400000, guid: f1ef8155229a7fd449146080f0c5503e, type: 2}
+  - {fileID: 11400000, guid: 8ae8fa8caba4bdd4f9587f35d2ed8b29, type: 2}
+  - {fileID: 11400000, guid: 8157e3cfc13afe94eabd64856b3cb47a, type: 2}
+  - {fileID: 11400000, guid: d6a62ee6e77af2c45b3b2c9151190ae1, type: 2}
+  - {fileID: 11400000, guid: f89150d0518a6b641831713e438011f3, type: 2}
   _boss:
   - _first: {fileID: 8034653275129300049, guid: 4c2e3ab074f12f743979b6d3bd8e8dc7, type: 3}
     _second: {fileID: 11400000, guid: e7f9c92553e73244e8e81eb03c7df7c9, type: 2}
+  - _first: {fileID: 8034653275129300049, guid: 4c2e3ab074f12f743979b6d3bd8e8dc7, type: 3}
+    _second: {fileID: 11400000, guid: 6a89608c8be186140bc664345e9c28e2, type: 2}
 --- !u!1 &277472546 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5678224662679486672, guid: a5e9bead8f811b746b042b6d549b2c95, type: 3}
@@ -1951,24 +1964,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bcd5962bfaba945a7c7aab4402ba9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roomSizeMin: {x: 10, y: 10}
-  _roomSizeMax: {x: 20, y: 20}
+  _roomSizeMin: {x: 20, y: 20}
+  _roomSizeMax: {x: 30, y: 30}
   _enemyCountProbability:
-  - value: 0
-    probability: 0.05
   - value: 1
     probability: 0.4
   - value: 2
     probability: 0.4
   - value: 3
-    probability: 0.15
+    probability: 0.1
+  - value: 4
+    probability: 0.05
+  - value: 5
+    probability: 0.05
   _boostCountProbability:
   - value: 0
-    probability: 0
+    probability: 0.85
   - value: 1
-    probability: 1
+    probability: 0.1
   - value: 2
-    probability: 0
+    probability: 0.05
 --- !u!1 &1060227212
 GameObject:
   m_ObjectHideFlags: 0
@@ -3059,7 +3074,7 @@ PrefabInstance:
     - target: {fileID: 277472553, guid: a5e9bead8f811b746b042b6d549b2c95, type: 3}
       propertyPath: _weapon
       value: 
-      objectReference: {fileID: 11400000, guid: 824804df6c98ae740855bd73f57a2fb9, type: 2}
+      objectReference: {fileID: 11400000, guid: 0ca2521f0eeb3bb4ab0690b8e29fbeb2, type: 2}
     - target: {fileID: 3966229529464963355, guid: a5e9bead8f811b746b042b6d549b2c95, type: 3}
       propertyPath: m_RootOrder
       value: 3

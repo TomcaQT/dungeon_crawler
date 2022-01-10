@@ -45,6 +45,7 @@ public class EnemyController : MonoBehaviour
         Awake();
         Start();
         _damage = enemyData.Damage* (1  + (roomNumber * 0.05f));
+        _agent.speed = enemyData.Speed;
         _attackSpeed = enemyData.AttackSpeed;
         _isLoaded = true;
     }
