@@ -102,6 +102,10 @@ public class BossController : EnemyController
 
     public void NextPhase()
     {
+        if (_phase == 1)
+        {
+            _movementType = MovementType.Chase;
+        }
         if (_phase >= _phaseDamageMultipliers.Count)
             return;
         _damage *= _phaseDamageMultipliers[_phase];

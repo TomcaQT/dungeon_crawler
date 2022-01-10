@@ -1103,7 +1103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 277472550}
   _smoothSpeed: 0.125
-  _size: 8
+  _size: 10
   _offset: {x: 0, y: 0, z: -15}
 --- !u!20 &519420031
 Camera:
@@ -1132,7 +1132,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2525,6 +2525,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buyableItems:
   - {fileID: 11400000, guid: daf043b43a1821549bf4bfe9488c183c, type: 2}
+  - {fileID: 11400000, guid: ddad499af3420964d95269d6c37a3d3f, type: 2}
+  - {fileID: 11400000, guid: 8157e3cfc13afe94eabd64856b3cb47a, type: 2}
   - {fileID: 11400000, guid: 33af3e0d9ce6cbf43909ebbf2c2a6c7c, type: 2}
   _shopPrefab: {fileID: 2019600503722181000, guid: 8d16b9256ba2de644814084d622a2524, type: 3}
 --- !u!82 &1276293906

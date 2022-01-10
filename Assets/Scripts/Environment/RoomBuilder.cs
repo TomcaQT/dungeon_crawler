@@ -44,7 +44,7 @@ public class RoomBuilder : MonoBehaviour
     {
         Room room = new Room();
         room.Number = 1;
-        room.Size = new Vector2Int(20, 20);
+        room.Size = new Vector2Int(40, 40);
         room.Shape = RoomShape.Square;
 
         room.EnemyCount = 1;

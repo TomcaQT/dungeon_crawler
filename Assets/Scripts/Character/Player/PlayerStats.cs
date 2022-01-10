@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour, IDamagable
@@ -24,7 +25,7 @@ public class PlayerStats : MonoBehaviour, IDamagable
     {
         _weapon = Instantiate(_weapon);
         _hp = new Resource(100f, "Hp", 0f);
-        _energy = new Resource(100f, "Energy", 20f);
+        _energy = new Resource(100f, "Energy");
 
         _damage = new Stat(10f, "Damage");
         _resistency = new Stat(5f, "Resistency");
@@ -32,6 +33,8 @@ public class PlayerStats : MonoBehaviour, IDamagable
         _bulletSpeed = new Stat(10f, "BulletSpeed");
 
         Currency = new Currency(100, "µ");
+
+        StartCoroutine(Regen());
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -49,7 +52,23 @@ public class PlayerStats : MonoBehaviour, IDamagable
         }
     }
 
-
+    
+    private readonly int REGEN_TIMES_PER_SEC = 5;
+    private float _regenPerSec = 20f;
+    private IEnumerator Regen()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f / REGEN_TIMES_PER_SEC);
+            if (_energy.Value < _energy.MaxValue)
+            {
+                float toAdd = _regenPerSec / REGEN_TIMES_PER_SEC;
+                _energy.Add(toAdd);
+            }
+        }
+    }
+    
+    
     public void TakeDamage(float amount)
     {
         if (_hp.Take(amount))
@@ -64,6 +83,7 @@ public class PlayerStats : MonoBehaviour, IDamagable
         {
             case "Hp":
                 _hp.IncreaseMax(amount);
+                Heal(amount);
                 break;
             case "Heal":
                 HealPercent(amount);

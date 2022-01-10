@@ -106,7 +106,7 @@ public class Resource
     }
     
 
-    private readonly int REGEN_TIMES_PER_SEC = 2;
+    private readonly int REGEN_TIMES_PER_SEC = 5;
     private async Task Regen()
     {
         _isRegenerating = true;
@@ -117,7 +117,7 @@ public class Resource
             Add(toAdd);
         }
 
-        _isRegenerating = false;
+        //_isRegenerating = false;
     }
     
     public float MaxValue => _maxValue;

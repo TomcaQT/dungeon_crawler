@@ -66,7 +66,7 @@ public class UIManager : MonoBehaviour
 
     private void e_UpdateHp(object sender, ResourceChangeEventArgs e)
     {
-        _hpText.text = $"{e.Value}/{_playerStats.Hp.MaxValue}";
+        _hpText.text = $"{e.Value:F1}/{_playerStats.Hp.MaxValue:F0}";
         _hpBar.value = _playerStats.Hp.Percentage01;
     }
 
@@ -127,7 +127,7 @@ public class UIManager : MonoBehaviour
     
     private void GetInput()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             PauseMenu();
         }
