@@ -1,7 +1,7 @@
 # MaNera - Matematika Neradostně 
 2D dungeon_crawler game for NI-APH course with math theme. Name ispired from [MARAST](https://marast.fit.cvut.cz/). Made with Unity.
 # Deploy
-Game is deployed here : https://tomiukqt.github.io/dungeon_crawler/
+Game is deployed here : https://tomcaqt.github.io/dungeon_crawler/
 # How to open project in Unity
 1. Clone repo
 2. Install [Unity Hub](https://unity3d.com/get-unity/download)
